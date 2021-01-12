@@ -31,20 +31,30 @@ Show examples of usage:
 `put-your-code-here`
 
 ## Features
-List of features ready and TODOs for future development
-* Awesome feature 1
-* Awesome feature 2
-* Awesome feature 3
+Buyer Ability:
+* Browse items at a glance
+* View items in detail
+* Send and receive messages with seller
 
-To-do list:
-* Wow improvement to be done 1
-* Wow improvement to be done 2
+Seller Ability:
+* List items for sale
+* Send and receive messagaes with buyers
+* Mark items as sold
+
+Admin Ability:
+* View Seller and User details
+* Message users and sellers
+* Add, delete, and edit items
+* Edit and lock user and seller profiles
 
 ## Status
 Project is: _in progress_, _finished_, _no longer continue_ and why?
 
 ## Inspiration
-Add here credits. Project inspired by..., based on...
+Learning how to build a web application.
 
-## Contact
+## Group Members
 Peter Torres 
+Annelise Blanchard
+Mona Mohamed
+Roberto

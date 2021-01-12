@@ -55,6 +55,6 @@ Learning how to build a web application.
 
 ## Group Members
 Peter Torres; 
-Annelise Blanchard;
-Mona Mohamed;
-Roberto;
+Annelise Blanchard; 
+Mona Mohamed; 
+Roberto; 

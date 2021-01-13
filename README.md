@@ -54,7 +54,7 @@ Project is: _in progress_, _finished_, _no longer continue_ and why?
 Learning how to build a web application.
 
 ## Group Members
-Peter Torres 
-Annelise Blanchard
-Mona Mohamed
-Roberto
+Peter Torres;
+Annelise Blanchard;
+Mona Mohamed;
+Roberto;

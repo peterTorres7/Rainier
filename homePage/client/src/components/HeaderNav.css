@@ -1,0 +1,16 @@
+.headerNav {
+    width: 100%;
+    background-color: darkgreen;
+}
+
+.headerNav ul {
+    list-style: none;
+    float: right;
+}
+
+.headerNav li {
+    float: left;
+    margin-left: 20px;
+    margin-right: 20px;
+    color: black;
+}

@@ -1,0 +1,19 @@
+{
+  "name": "loginpage",
+  "version": "1.0.0",
+  "description": "Login page for our group assignment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/peterTorres7/Rainier/tree/week3"
+  },
+  "author": "Mona Mohamed",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  }
+}

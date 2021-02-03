@@ -1,0 +1,23 @@
+{
+  "name": "services",
+  "version": "1.0.0",
+  "description": "\"Routes for Assignment 4\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peterTorres7/Rainier.git"
+  },
+  "author": "Rainier Group",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/peterTorres7/Rainier/issues"
+  },
+  "homepage": "https://github.com/peterTorres7/Rainier#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  }
+}

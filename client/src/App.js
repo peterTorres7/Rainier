@@ -12,15 +12,7 @@ import ItemImage from './components/ItemImage'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Header></Header>
-        <HeaderNav></HeaderNav>
-        <CategoryNav></CategoryNav>
-        <Login></Login>
-        <Footer></Footer>
-      </header>
-    </div>
+    <Login></Login>
   );
 }
 

@@ -47,7 +47,7 @@ export default function details() {
                 class = "button"
                 onClick={() => {
                     alert("will start messages with seller")
-                }}>Message Seller</button>
+                }}>Message Seller </button>
         </div>
     )
 }

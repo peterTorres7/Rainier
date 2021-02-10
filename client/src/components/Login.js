@@ -1,57 +1,39 @@
 import React from 'react';
 import { 
-    Button, 
-    Grid, 
-    Link, 
-    makeStyles,
-    Typography,
-    Input,
-    TextField
+  Button, 
+  Grid, 
+  Link, 
+  makeStyles,
+  Typography,
+  Paper
  } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         height: '100vh',
     },
-    paper: {
+    card: {
+        marginTop: 'fit',
+        marginBottom: 'fit',
+        width: '500px',
+        backgroundColor: theme.palette.success.main,
         margin: theme.spacing(8, 4),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
     },
-    container: {
-        height: '100%',
-        alignItems: 'center',
-    },
-    card: {
-        height: '370px',
-        marginTop: 'auto',
-        marginBottom: 'auto',
-        width: '400px',
-        backgroundColor: theme.palette.success.main,
-    },
     form: {
         width: '100%', 
-        marginTop: theme.spacing(1),
+        marginTop: 'auto',
+        marginBottom: 'auto',
         alignItems: 'center'
     },
-    inputGroup: {
-        width: '50px',
-        backgroundColor: '#FFC312',
-        color: 'black',
-        border: '0',
-    },
-    remember: {
-        color: 'white',
-    },
-    rememberInput: {
-    width: '20px',
-    height: '20px',
-    marginLeft: '15px',
-    marginRight: '5px',
+    paper: {
+        textAlign: 'left',
+        margin: theme.spacing(3,git  2, 2),
     },
     submit: {
-        margin: theme.spacing(3, 0, 2),
+        margin: theme.spacing(3, 2, 2),
         color: 'black',
         backgroundColor: '#FFC312',
         width: '100px',
@@ -64,43 +46,52 @@ const useStyles = makeStyles((theme) => ({
 export default function Login() {
     const style = useStyles();
     return (
-        
-     
-            <div className={style.paper}>
-                <div className={style.card}>
-                    <Typography component="h1" variant="h5">
-                        Login
-                    </Typography>
-                    <form className={style.form}> 
+        <div className={style.card}>
+            <Typography component="h1" variant="h5">
+                Login
+            </Typography>
+
+            <form className={style.form}> 
+                <Grid container >
+                    <Grid container container item xs={12} spacing={3}>
+                        <React.Fragment>
+                            <Grid item xs={5}>
+                                <Paper className={style.paper}>
+                                    <label htmlFor="UserName">User Name</label>
+                                </Paper>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <Paper className={style.paper}>
+                                <input id="UserName" type="UserName"/>
+                                </Paper>
+                            </Grid>
+                        </React.Fragment>
+                    </Grid> 
+                </Grid> 
                         
-						    <div className={style.inputGroup}>
-                                
-						            
-                                    <TextField margin="normal" fullWidth label="Username"/>
-                                
-                                
-						            
-                                    <TextField align="center" fullWidth label="Password"/>
-                                
-					        </div> 
-                        <Grid>
-                            <Button className={style.submit}> Login </Button>
-                            <Button className={style.submit}> Sign Up </Button>
-                        </Grid>                           
-                        
-                    <Grid container>
-                        <Link herf=""> Forgot your password? </Link>
-                    </Grid>
-
-                    </form>  
-                </div>
-
-            </div>
-            
-    
-        
-
+                <Grid container>
+                    <Grid container item xs={12} spacing={3}>
+                        <React.Fragment>
+                            <Grid item xs={5}>
+                                <Paper className={style.paper}>
+                                <label htmlFor="Password">Password</label>
+                                </Paper>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <Paper className={style.paper}>
+                                    <input id="Password" type="Password"/>
+                                </Paper>
+                            </Grid>
+                        </React.Fragment>
+                    </Grid> 
+                </Grid>     
+                
+                <Grid>
+                    <Button className={style.submit}> Login </Button>
+                    <Button className={style.submit}> Sign Up </Button>
+                    <Link herf=""><h6>Forgot your password? </h6>  </Link>
+                </Grid>               
+            </form>  
+        </div>
     );
 }
-	        
-        

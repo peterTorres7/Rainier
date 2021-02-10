@@ -12,7 +12,16 @@ import ItemImage from './components/ItemImage'
 
 function App() {
   return (
-    <Login></Login>
+    <div className="App">
+      <header className="App-header">
+        <Header></Header>
+        <HeaderNav></HeaderNav>
+        <CategoryNav></CategoryNav>
+        <PopularItemGroup></PopularItemGroup>
+        <PopularItemGroup></PopularItemGroup>
+        <Footer></Footer>
+      </header>
+    </div>
   );
 }
 

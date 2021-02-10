@@ -41,63 +41,41 @@ const useStyles = makeStyles((theme) => ({
         color: 'black',
         border: '0',
     },
-    remember: {
-        color: 'white',
-    },
-    rememberInput: {
-    width: '20px',
-    height: '20px',
-    marginLeft: '15px',
-    marginRight: '5px',
-    },
     submit: {
         margin: theme.spacing(3, 0, 2),
         color: 'black',
         backgroundColor: '#FFC312',
         width: '100px',
-    },
-    links:{
-        color: 'white',
-    }      
+    },      
 }));
 
-export default function Login() {
+export default function SignUp() {
     const style = useStyles();
     return (
         
-     
-            <div className={style.paper}>
+        <Grid>
+            <div className={style.container}>
                 <div className={style.card}>
                     <Typography component="h1" variant="h5">
                         Login
                     </Typography>
                     <form className={style.form}> 
-                        
 						    <div className={style.inputGroup}>
-                                
-						            
-                                    <TextField margin="normal" fullWidth label="Username"/>
-                                
-                                
-						            
-                                    <TextField align="center" fullWidth label="Password"/>
-                                
+                                <TextField margin="normal" fullWidth label="First Name"/>
+                                <TextField margin="normal" fullWidth label="Last Name"/>
+                                <TextField margin="normal" fullWidth label="User Name"/>
+                                <TextField margin="normal" fullWidth label="Password"/>
+                                <TextField margin="normal" fullWidth label="Email"/>
+                                <TextField margin="normal" fullWidth label="Date of Birth"/>
 					        </div> 
                         <Grid>
-                            <Button className={style.submit}> Login </Button>
                             <Button className={style.submit}> Sign Up </Button>
                         </Grid>                           
-                        
-                    <Grid container>
-                        <Link herf=""> Forgot your password? </Link>
-                    </Grid>
-
                     </form>  
                 </div>
-
             </div>
             
-    
+        </Grid>
         
 
     );
@@ -107,4 +85,3 @@ export default function Login() {
 
 
 
-S

@@ -7,7 +7,6 @@ import Footer from './components/Footer';
 import CategoryNav from './components/CategoryNav';
 import Login from './components/Login';
 import Details from './components/Details';
-import ItemImage from './components/ItemImage'
 
 
 function App() {
@@ -20,6 +19,15 @@ function App() {
         <PopularItemGroup></PopularItemGroup>
         <PopularItemGroup></PopularItemGroup>
         <Footer></Footer>
+
+        <Login/>
+
+
+        <Details/>
+
+
+
+
       </header>
     </div>
   );

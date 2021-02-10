@@ -17,7 +17,8 @@ function App() {
         <Header></Header>
         <HeaderNav></HeaderNav>
         <CategoryNav></CategoryNav>
-        <Login></Login>
+        <PopularItemGroup></PopularItemGroup>
+        <PopularItemGroup></PopularItemGroup>
         <Footer></Footer>
       </header>
     </div>

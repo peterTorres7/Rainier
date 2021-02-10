@@ -8,7 +8,7 @@ app.use(express.json());
 //routes files
 const productRouter = require('./routes/productRoutes');
 const userRouter = require('./routes/userRoutes');
-const transRouter = require('./routes/transRoutes');
+const transRouter = require('./routes/transactionRoutes');
 
 
 //mount routers

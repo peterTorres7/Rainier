@@ -1,10 +1,3 @@
-// import React from 'react';
-// import './ProfilePage.css';
-// import { 
-//     Button
-//      } from '@material-ui/core';
-
-
 // /**
 //  * 
 //  * Making user profile page for sellers, buyers, and admins 
@@ -15,74 +8,54 @@
 //  * 4. ... user details?
 //  * 5. items being sold buy user
 //  * */
-
-// // const myStle = makeStyles((theme) => {
-
-// //     username {
-
-// //     }
-
-
-// // })
-
-// export default function profilePage () {
-
-//     return (
-//         <div className = "UserProfile">
-//             <h4>First Name Last Name</h4>
-//             <p1>This person's address</p1>
-//             <p>about this user</p>
-        
-        
-//         </div>
-
-//     )
-// }
-
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import { red } from '@material-ui/core/colors';
+import { Container } from '@material-ui/core';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 4,
-    backgroundColor: 'blue'
   },
   paper: {
-    padding: theme.spacing(1),
+    padding: theme.spacing(10),
     textAlign: 'center',
-    color: 'red',
-    backgroundColor: 'grey'
   },
 }));
 
-export default function AutoGrid() {
+const colors = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#81d4fa',
+    },
+    secondary: {
+      main: '#5e35b1',
+    },
+  },
+});
+
+
+export default function AutoGrid(props) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
+      <Container className={colors.palette.primary}>
+        <h4>First and Last Name</h4>
+        <h5>User is a: (admin) {props.role}</h5>
+        <p>User locations & other details</p>
+      </Container>
       <Grid container spacing={3}>
         <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
+          <Paper className={classes.paper}>item for sale (if seller)</Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
+          <Paper className={classes.paper}>item for sale (if seller)</Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
-        </Grid>
-      </Grid>
-      <Grid container spacing={3}>
-        <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
-        </Grid>
-        <Grid item xs={6}>
-          <Paper className={classes.paper}>xs=6</Paper>
-        </Grid>
-        <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
+          <Paper className={classes.paper}>item for sale (if seller)</Paper>
         </Grid>
       </Grid>
     </div>

@@ -1,5 +1,34 @@
-.itemDetails {
-    padding-top: 70%;
+.details {
+    padding: 25%;
     text-align: center;
     font-size: small;
+    background-color: lightseagreen;
+}
+
+.itemImage {
+    width: 50%;
+    background: red;
+    text-align: center;
+    color: blue;
+}
+
+.itemName {
+    color: red;
+    background-color: black;
+}
+
+.message {
+    color: black;
+    background-color: red;
+}
+
+.button {
+    color: white;
+    background-color: black;
+    padding-inline: right;
+} 
+
+.buttonChanged {
+    color: red;
+    background-color: yellow;
 }

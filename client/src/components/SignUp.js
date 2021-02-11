@@ -2,7 +2,7 @@ import React from 'react';
 import { 
   Button, 
   Grid, 
-  Link, 
+  TextField, 
   makeStyles,
   Typography,
   Paper
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     },
     paper: {
         textAlign: 'left',
-        margin: theme.spacing(3,git  2, 2),
+        margin: theme.spacing(3, 2, 2),
     },
     submit: {
         margin: theme.spacing(3, 2, 2),
@@ -43,12 +43,12 @@ const useStyles = makeStyles((theme) => ({
     }      
 }));
 
-export default function Login() {
+export default function SignUp() {
     const style = useStyles();
     return (
         <div className={style.card}>
             <Typography component="h1" variant="h5">
-                Login
+                Register
             </Typography>
 
             <form className={style.form}> 
@@ -57,18 +57,35 @@ export default function Login() {
                         <React.Fragment>
                             <Grid item xs={5}>
                                 <Paper className={style.paper}>
-                                    <label htmlFor="UserName">User Name</label>
+                                    <label htmlFor="FirstName">First Name</label>
                                 </Paper>
                             </Grid>
                             <Grid item xs={6}>
                                 <Paper className={style.paper}>
-                                <input id="UserName" type="UserName"/>
+                                <input id="FirstName" type="FirstName"/>
                                 </Paper>
                             </Grid>
                         </React.Fragment>
                     </Grid> 
                 </Grid> 
-                        
+
+                <Grid container >
+                    <Grid container container item xs={12} spacing={3}>
+                        <React.Fragment>
+                            <Grid item xs={5}>
+                                <Paper className={style.paper}>
+                                    <label htmlFor="LastName">Last Name</label>
+                                </Paper>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <Paper className={style.paper}>
+                                <input id="LastName" type="LastName"/>
+                                </Paper>
+                            </Grid>
+                        </React.Fragment>
+                    </Grid> 
+                </Grid>
+
                 <Grid container>
                     <Grid container item xs={12} spacing={3}>
                         <React.Fragment>
@@ -86,11 +103,33 @@ export default function Login() {
                     </Grid> 
                 </Grid>     
                 
+                <Grid container >
+                    <Grid container container item xs={12} spacing={3}>
+                        <React.Fragment>
+                            <Grid item xs={5}>
+                                <Paper className={style.paper}>
+                                    <label htmlFor="Email">Email</label>
+                                </Paper>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <Paper className={style.paper}>
+                                <input id="Email" type="Email"/>
+                                </Paper>
+                            </Grid>
+                        </React.Fragment>
+                    </Grid> 
+                </Grid>
+                <TextField
+                    id="date"
+                    label="Birthday"
+                    type="date"
+                    defaultValue="01-01-01"
+                    className={style.textField}
+                    InputLabelProps={{shrink: true,}}
+                />
                 <Grid>
-                    <Button className={style.submit}> Login </Button>
                     <Button className={style.submit}> Sign Up </Button>
-                    <Link herf=""><h6>Forgot your password? </h6>  </Link>
-                </Grid>               
+                </Grid>                           
             </form>  
         </div>
     );

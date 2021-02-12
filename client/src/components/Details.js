@@ -1,9 +1,10 @@
 import React from 'react';
 import './Details.css';
 import { 
-    ListItemIcon,
-    Link
+    ListItemIcon
      } from '@material-ui/core';
+import { Link } from "react-router-dom";
+      
 
 
 /*
@@ -35,12 +36,7 @@ export default function details() {
             <p1>descriptions</p1>
             <br></br>
             <p>Seller: </p>
-            <Link
-                onClick={() => {
-                    alert("should go to user profile")
-                    console.info("Go to user profile");
-                }}
-                >
+            <Link to="/users">
                 Link to Seller User Profile
                 </Link>
             <button 
@@ -48,6 +44,9 @@ export default function details() {
                 onClick={() => {
                     alert("will start messages with seller")
                 }}>Message Seller </button>
+            <form action="/">
+                <button class="homeButton">Home</button>
+            </form>
         </div>
     )
 }

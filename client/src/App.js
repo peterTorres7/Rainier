@@ -23,7 +23,6 @@ function App() {
       <Switch>
         <Route path="/item/:id">
           <Details></Details>
-            <Link to="/users">User/Seller</Link>
         </Route>
         <Route path="/users">
           <ProfilePage></ProfilePage>

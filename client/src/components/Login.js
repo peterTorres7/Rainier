@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     },
     paper: {
         textAlign: 'left',
-        margin: theme.spacing(3,git  2, 2),
+        margin: theme.spacing(3, 2, 2),
     },
     submit: {
         margin: theme.spacing(3, 2, 2),

@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import CategoryNav from './components/CategoryNav';
 import Login from './components/Login';
 import Details from './components/Details';
+import ProfilePage from './components/ProfilePage';
 
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
 
 
         <Details/>
-
+        <ProfilePage/>
 
 
 

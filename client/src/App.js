@@ -1,12 +1,14 @@
 import './App.css';
+import {BrowserRouter, Switch, Route, Link} from "react-router-dom";
+import {Button} from '@material-ui/core';
 import Header from './components/Header';
 import HeaderNav from './components/HeaderNav';
 import PopularItemGroup from './components/PopularItemGroup';
-//import Footer from './components/Footer';
-//import CategoryNav from './components/CategoryNav';
 import Login from './components/Login';
+import SignUp from './components/SignUp';
 import Details from './components/Details';
 import ProfilePage from './components/ProfilePage';
+
 import {
   BrowserRouter,
   Switch,
@@ -14,28 +16,30 @@ import {
   Link
 } from "react-router-dom";
 
-
 function App() {
   return (
     <BrowserRouter>
-      <Header/>
-      <HeaderNav/>
+      <Header />
+      <HeaderNav />
       <Switch>
-        <Route path="/item/:id">
-          <Details></Details>
+        <Route exact path="/Login.js">
+          <Login />
         </Route>
-        <Route path="/users">
-          <ProfilePage></ProfilePage>
+        <Route exact path="/SignUp.js">
+          <SignUp />
         </Route>
-        <Route path="/login">
-          <Login/>
+        <Route exact path="/Details.js">
+          <Details />
         </Route>
-        <Route path="/">
+        <Route exact path="/ProfilePage.js">
+          <ProfilePage />
+        </Route>
+        <Route exact path="/">
           <PopularItemGroup></PopularItemGroup>
           <PopularItemGroup></PopularItemGroup>
         </Route>
-        
       </Switch>
+        <Footer></Footer>
     </BrowserRouter>
   );
 }

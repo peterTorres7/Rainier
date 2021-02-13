@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './HeaderNav.css';
 import {
     AppBar,
@@ -50,7 +51,7 @@ export default function HeaderNav() {
         
         <AppBar position="static">
             <Toolbar className={classes.toolbar}>
-                <IconButton className={classes.iconButton} edge="start" aria-label="menu">
+                <IconButton className={classes.iconButton} component={Link} to={'/'} edge="start" aria-label="menu">
                     <img src={rainierLogo} className={classes.rainierImage} alt='Mt. Rainier Logo' />
                 </IconButton>
                 <Typography className={classes.title} variant="h6"> 

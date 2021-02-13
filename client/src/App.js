@@ -3,15 +3,18 @@ import {BrowserRouter, Switch, Route, Link} from "react-router-dom";
 import {Button} from '@material-ui/core';
 import Header from './components/Header';
 import HeaderNav from './components/HeaderNav';
-import PopularItem from './components/PopularItem';
 import PopularItemGroup from './components/PopularItemGroup';
-import Footer from './components/Footer';
-import CategoryNav from './components/CategoryNav';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Details from './components/Details';
 import ProfilePage from './components/ProfilePage';
 
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
   return (

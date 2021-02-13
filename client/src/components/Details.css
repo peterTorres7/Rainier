@@ -28,7 +28,9 @@
     padding-inline: right;
 } 
 
-.buttonChanged {
-    color: red;
+.homeButton {
+    scroll-padding-top: 20;
+    padding-top: 2;
+    color: orange;
     background-color: yellow;
 }

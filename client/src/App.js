@@ -1,6 +1,5 @@
 import './App.css';
 import {BrowserRouter, Switch, Route, Link} from "react-router-dom";
-import {Button} from '@material-ui/core';
 import Header from './components/Header';
 import HeaderNav from './components/HeaderNav';
 import PopularItemGroup from './components/PopularItemGroup';
@@ -9,20 +8,13 @@ import SignUp from './components/SignUp';
 import Details from './components/Details';
 import ProfilePage from './components/ProfilePage';
 
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-
 function App() {
   return (
     <BrowserRouter>
       <Header />
       <HeaderNav />
       <Switch>
-        <Route exact path="/Login.js">
+        <Route path="/Login.js">
           <Login />
         </Route>
         <Route exact path="/SignUp.js">
@@ -39,7 +31,6 @@ function App() {
           <PopularItemGroup></PopularItemGroup>
         </Route>
       </Switch>
-        <Footer></Footer>
     </BrowserRouter>
   );
 }

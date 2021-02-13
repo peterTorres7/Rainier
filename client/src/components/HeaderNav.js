@@ -17,6 +17,12 @@ const useStyles = makeStyles((theme) => ({
     iconButton: {
         marginRight: theme.spacing(3),
     },
+    logIn: {
+        color: "black",
+    },
+    signUp: {
+        color: "black",
+    },
     rainierImage: {
         width: '50px',
         height: '50px',
@@ -38,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         flexGrow: 2,
+        textAlign: 'center',
     },
     toolbar: {
         backgroundColor: "#1F70B1",
@@ -54,7 +61,7 @@ export default function HeaderNav() {
                 <IconButton className={classes.iconButton} component={Link} to={'/'} edge="start" aria-label="menu">
                     <img src={rainierLogo} className={classes.rainierImage} alt='Mt. Rainier Logo' />
                 </IconButton>
-                <Typography className={classes.title} variant="h6"> 
+                <Typography className={classes.title} variant="h5"> 
                     Casa de Rainier
                 </Typography>
                 <div className={classes.search}>
@@ -63,8 +70,12 @@ export default function HeaderNav() {
                     </div>
                     <InputBase className={classes.searchInput} placeholder="Search..." />
                 </div>
-                <Button>Log In</Button>
-                <Button>Sign Up</Button>
+                <Button className={classes.logIn} component={Link} to={'/Login.js'}  size="small" color="primary">
+                    Log In
+                </Button>
+                <Button className={classes.signUp} component={Link} to={'/SignUp.js'}  size="small" color="primary">
+                    Sign Up
+                </Button>
             </Toolbar>
         </AppBar>
         

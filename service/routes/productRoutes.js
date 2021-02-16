@@ -1,54 +1,58 @@
 const express = require('express');
 const productRouter = express.Router();
-const { productsList } = require("../data/products");
+
+const { productController } = require("../controllers/productsController");
+
+const { product } = require("../models/Product");
+
 
 productRouter.route('/')
   // Get all products
   .get((req, res) => {
-    res.json(productsList);
+    res.json(productController);
   });
 
-productRouter.route('/:pid')
+productRouter.route('/:name')
   // Get a single product by pid
   .get((req, res) => {
-    const resultpid = productsList.filter((item) => {
-      return item.pid === req.params.pid;
+    const resultname = productController.filter((item) => {
+      return item.name === req.params.name;
     });
-    if (resultpid.length === 1){
-      res.send(resultpid);
+    if (resultname.length === 1){
+      res.send(resultname);
     } else {
       res.status(404).send('Sorry, this product does not exist');
     } 
   })
   //Ceartes new product
   .post((req, res)=>{
-    const resultAdd = productsList.filter((item) => {
-      return item.pid === req.params.pid;
+    const resultAdd = productController.filter((item) => {
+      return item.name === req.params.name;
     });
     if (resultAdd.length === 1){
       res.status(404).send('Sorry, this product is already exist');
     } else {
-      res.status(200).json({success: true, msg: 'Success! Added product: '+ req.params.pid });
+      res.status(200).json({success: true, msg: 'Success! Added product: '+ req.params.name });
     } 
   })
   //update product
   .put((req, res) => {
-    const resultUpdate = productsList.filter((item) => {
-      return item.pid === req.params.pid;
+    const resultUpdate = productController.filter((item) => {
+      return item.name === req.params.name;
     });
     if (resultUpdate.length === 1){
-      res.status(200).json({success: true, msg: 'Success! Updated product: ' + req.params.pid });
+      res.status(200).json({success: true, msg: 'Success! Updated product: ' + req.params.name });
     } else{
       res.status(404).send('Sorry, this product does not exist');
     } 
   })
   //delete product
   .delete((req, res) => {
-    const resultDelete = productsList.filter((item) => {
-      return item.pid === req.params.pid;
+    const resultDelete = productController.filter((item) => {
+      return item.name === req.params.name;
     });
     if (resultDelete.length === 1){
-      res.status(200).json({success: true, msg: 'Success! Deleted product: ' + req.params.pid});
+      res.status(200).json({success: true, msg: 'Success! Deleted product: ' + req.params.name});
     } else {
       res.status(404).send('Sorry, this product does not exist');
     } 

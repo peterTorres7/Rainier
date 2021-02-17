@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter, Switch, Route, Link} from "react-router-dom";
+import {BrowserRouter, Switch, Route} from "react-router-dom";
 import Header from './components/Header';
 import HeaderNav from './components/HeaderNav';
 import PopularItemGroup from './components/PopularItemGroup';

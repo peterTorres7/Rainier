@@ -1,6 +1,6 @@
 const express = require('express');
 const userRouter = express.Router();
-const { usersList } = require("../data/users");
+const { usersList } = require("../models/User");
 
 userRouter.route('/')
   // Get all users
@@ -8,11 +8,11 @@ userRouter.route('/')
     res.json(usersList);
   });
 
-userRouter.route('/:uid')
+userRouter.route('/:userNamed')
   // Get a single user by id
   .get((req, res) => {
     const resultID = usersList.filter((item) => {
-      return item.uid === req.params.uid;
+      return item.userName === req.params.userName;
     });
     if (resultID.length === 1){
       res.send(resultID);
@@ -23,21 +23,21 @@ userRouter.route('/:uid')
   //Ceartes new user
   .post((req, res)=>{
     const resultAdd = usersList.filter((item) => {
-      return item.uid === req.params.uid;
+      return item.userName === req.params.userName;
     });
     if (resultAdd.length === 1){
       res.status(404).send('Sorry, this user is already exist');
     } else {
-      res.status(200).json({success: true, msg: 'Success! Added user: '+ req.params.uid });
+      res.status(200).json({success: true, msg: 'Success! Added user: '+ req.params.userName });
     } 
   })
   //update user
   .put((req, res) => {
     const resultUpdate = usersList.filter((item) => {
-      return item.uid === req.params.uid;
+      return item.userName === req.params.userName;
     });
     if (resultUpdate.length === 1){
-      res.status(200).json({success: true, msg: 'Success! Updated user: ' + req.params.uid});
+      res.status(200).json({success: true, msg: 'Success! Updated user: ' + req.params.userName});
     } else{
       res.status(404).send('Sorry, this user does not exist');
     } 
@@ -45,10 +45,10 @@ userRouter.route('/:uid')
   //delete user
   .delete((req, res) => {
     const resultDelete = usersList.filter((item) => {
-      return item.uid === req.params.uid;
+      return item.userName === req.params.userName;
     });
     if (resultDelete.length === 1){
-      res.status(200).json({success: true, msg: 'Success! Deleted user: '+ req.params.uid});
+      res.status(200).json({success: true, msg: 'Success! Deleted user: '+ req.params.userName});
     } else {
       res.status(404).send('Sorry, this user does not exist');
     } 

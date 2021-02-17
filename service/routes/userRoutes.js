@@ -1,14 +1,43 @@
 const express = require('express');
 const userRouter = express.Router();
-const { usersList } = require("../models/User");
+const UsersList = require("../models/User");
 
 userRouter.route('/')
   // Get all users
-  .get((req, res) => {
-    res.json(usersList);
-  });
+  .get((req, res, next) => {
+    UsersList.find({}, (err, list) => {
+      if (err) { 
+        next(err) 
+      }
+      res.send(list);
+    })
+  })
+  .post((req, res, next) => {
+    User.create(req.body, (err, newUser) => {
+      if (err) { next(err) }
+      res.status(200);
+      res.send(newUser);
+    })
+  })
+  .delete((req, res, next) => {
+    const email = req.query.email;
+    if (!email) {
+      res.status(400);
+      res.send({ error: "must provide an email" });
+    }
+    User.findOneAndDelete({ email: email }, (err, user) => {
+      if (err) { next(err) }
+      else if (user) {
+        res.status(200);
+        res.send(user);
+      } else {
+        res.status(404);
+        res.send({ error: `Couldn't find user with email ${email}` });
+      }
+    })
+  })
 
-userRouter.route('/:userNamed')
+/* userRouter.route('/:userNamed')
   // Get a single user by id
   .get((req, res) => {
     const resultID = usersList.filter((item) => {
@@ -64,7 +93,7 @@ userRouter.get('/:fname', (req, res) => {
   } else{
     res.status(404).send('Sorry, this user does not exist');
   } 
-});
+}) ;*/
 
 
 module.exports = userRouter;

@@ -7,7 +7,7 @@ transRouter.route('/')
   .get((req, res) => {
     res.json(transactionsList);
   });
-​
+
 transRouter.route('/:transTitle')
   // Get a single transaction by id
   .get((req, res) => {
@@ -53,5 +53,5 @@ transRouter.route('/:transTitle')
       res.status(404).send('Sorry, this transaction does not exist');
     } 
   });
-​
-module.exports = transRouter;
+  
+  module.exports = transRouter;

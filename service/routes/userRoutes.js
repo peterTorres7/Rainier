@@ -11,33 +11,6 @@ userRouter.route('/')
       }
       res.send(list);
     })
-  })
-  .post((req, res, next) => {
-    UsersList.create(req.body, (err, newUser) => {
-      if (err) {
-         next(err) 
-      }
-      res.status(200);
-      res.send(newUser);
-    })
-  })
-  .delete((req, res, next) => {
-    const email = req.query.email;
-    if (!email) {
-      res.status(400);
-      res.send({ error: "must provide an email" });
-    }
-    UsersList.findOneAndDelete({ email: email }, (err, user) => {
-      if (err) 
-      { next(err) 
-      } else if (user) {
-        res.status(200);
-        res.send(user);
-      } else {
-        res.status(404);
-        res.send({ error: `Couldn't find user with email ${email}` });
-      }
-    });
   });
 
 userRouter.route('/:id')

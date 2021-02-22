@@ -11,33 +11,6 @@ transRouter.route('/')
       }
       res.send(list);
     })
-  })
-  .post((req, res, next) => {
-    TransactionsList.create(req.body, (err, newTransaction) => {
-      if (err) {
-         next(err) 
-      }
-      res.status(200);
-      res.send(newTransaction);
-    })
-  })
-  .delete((req, res, next) => {
-    const transTitle = req.query.transTitle;
-    if (!transTitle) {
-      res.status(400);
-      res.send({ error: "Must provide transaction title." });
-    }
-    TransactionsList.findOneAndDelete({ transTitle: transTitle }, (err, transaction) => {
-      if (err) 
-      { next(err) 
-      } else if (transaction) {
-        res.status(200);
-        res.send(transaction);
-      } else {
-        res.status(404);
-        res.send({ error: `Couldn't find transaction with  ${transTitle}` });
-      }
-    });
   });
 
 
@@ -67,7 +40,6 @@ transRouter.route('/:transTitle')
           res.status(404);
           res.send(`Sorry, transaction title ${req.params.transTitle} already exists.`);
       }
-
     });
   })
   //updates transaction

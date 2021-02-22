@@ -30,6 +30,10 @@ const useStyles = makeStyles((theme) => ({
         width: '50px',
         height: '50px',
     },
+    createProduct: {
+        color: 'white',
+        background: 'goldenRod',
+    },
     search: {
         borderRadius: theme.shape.borderRadius,
         backgroundColor: "#ADFBEE",
@@ -83,6 +87,9 @@ export default function HeaderNav() {
                 </Button>
                 <Button className={classes.transaction} component={Link} to={'/Transaction.js'}  size="small" color="primary">
                     Transactions
+                </Button>
+                <Button className={classes.createProduct} component={Link} to={'/CreateProduct.js'}  size="small" color="primary">
+                    Sell Product
                 </Button>
             </Toolbar>
         </AppBar>

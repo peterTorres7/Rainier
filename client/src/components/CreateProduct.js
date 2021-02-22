@@ -7,11 +7,10 @@ import {
     FormContorl,
     Input,
     InputLabel,
-    FilledInput
  } from "@material-ui/core";
 
  const defaultFormValues = {
-     productName: '',
+     productName: "",
      productQty: '',
      productPrice: '',
      productUser: '',
@@ -29,8 +28,7 @@ import {
      },
      formControl: {
          //margin: theme.spacing(5),
-         padding: 20,
-                
+         padding: 20,             
     },
     title: {
         margin: theme.spacing(1),
@@ -45,6 +43,7 @@ import {
      const handleInputChange = (event) => {
          const { name, value } = event.target;
          setProductFormValues({
+             ...setProductFormValues,
             [name] : value,
          });
      };
@@ -52,11 +51,11 @@ import {
      const handleSubmit = (event) => {
          event.preventDefault();
          const requestConfig = {
-             url: "http://localhost:4000/products/",
+             url: "http://localhost:4000/api/v1/products/",
              method: "post",
-             headers: { "ContentType": "application/json" },
+             headers: { 'Content-Type' : 'application/json' },
              data: {
-                 name: productFormValues.productName,
+                 productName: productFormValues.productName,
                  qty: productFormValues.productQty,
                  price: productFormValues.price,
                  user: productFormValues.productUser,
@@ -74,21 +73,21 @@ import {
             });
      };
 
-    if (success) {
-        return <Redirect to="/item/itemCreated" />;
-    } else {
+    // if (success) {
+    //     return <Redirect to="/item/itemCreated" />;
+    // else {
         return (
             <form
-                action={handleSubmit}
-                class={classes.formControl}>
+                onSubmit={handleSubmit}
+                class={classes.root}
+                id="productCreateForm">
                 Enter Details of Product for sale:
-                <FilledInput class = {classes.root} placeholder="Product Name"/>
-                <FilledInput class = {classes.root} placeholder="Product Quantity"/>
-                <FilledInput class = {classes.root} placeholder="Product Price"/>
-                <FilledInput class = {classes.root} placeholder="Product User"/>
-                <FilledInput class = {classes.root} placeholder="Product Date"/>
-                <button class = {classes.formControl} onClick = {handleInputChange}>Submit new product for sale</button>
+                <TextField class = {classes.root} placeholder="Product Name" value={productFormValues.productQty} onChange={handleInputChange} />
+                <TextField class = {classes.root} placeholder="Product Quantity" value={productFormValues.productQty} />
+                <TextField class = {classes.root} placeholder="Product Price" value={productFormValues.productPrice} />
+                <TextField class = {classes.root} placeholder="Product User" value={productFormValues.productUser} />
+                <TextField class = {classes.root} placeholder="Product Date" value={productFormValues.productDate} />
+                <button class = {classes.formControl}  onClick={handleInputChange} >Submit new product for sale</button>
             </form>
         )
     };
-}

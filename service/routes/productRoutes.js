@@ -3,13 +3,19 @@ const productRouter = express.Router();
 
 const { productController } = require("../controllers/productsController");
 
-const { product } = require("../models/Product");
+const  productsList = require("../models/Product");
 
 
 productRouter.route('/')
   // Get all products
   .get((req, res) => {
-    res.json(productController);
+    productsList.find({}, (err, list) => {
+      if (err) { 
+        next(err) 
+      }
+      res.send(list);
+    })
+
   });
 
 productRouter.route('/:name')

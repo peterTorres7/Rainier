@@ -7,6 +7,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Details from './components/Details';
 import ProfilePage from './components/ProfilePage';
+import CreateProduct from './components/CreateProduct';
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
         </Route>
         <Route exact path="/Details.js">
           <Details />
+        </Route>
+        <Route exact path="/procuts/create">
+          <CreateProduct/>
         </Route>
         <Route exact path="/ProfilePage.js">
           <ProfilePage />

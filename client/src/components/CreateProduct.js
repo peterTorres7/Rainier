@@ -11,9 +11,11 @@ import {
  } from "@material-ui/core";
 
  const defaultFormValues = {
-     productName: String,
-     productDescription: String,
-     productPrice: Number,
+     productName: '',
+     productQty: '',
+     productPrice: '',
+     productUser: '',
+     productDate: '',
  };
 
  const useStyles = makeStyles((theme) => ({
@@ -50,13 +52,15 @@ import {
      const handleSubmit = (event) => {
          event.preventDefault();
          const requestConfig = {
-             url: "http://localhost:4000/products",
+             url: "http://localhost:4000/products/",
              method: "post",
-             headers: { "Content'Type": "application/json" },
+             headers: { "ContentType": "application/json" },
              data: {
-                 name: productFormValues.name,
-                 details: productFormValues.productDetails,
+                 name: productFormValues.productName,
+                 qty: productFormValues.productQty,
                  price: productFormValues.price,
+                 user: productFormValues.productUser,
+                 date: productFormValues.productDate,
              },
          };
 
@@ -75,16 +79,14 @@ import {
     } else {
         return (
             <form
-                onSubmit={handleSubmit}
+                action={handleSubmit}
                 class={classes.formControl}>
                 Enter Details of Product for sale:
-                <FilledInput 
-                    id="name"
-                    class = {classes.root} placeholder="Product Name"/>
-                
-                
-                <FilledInput class = {classes.root} placeholder="Product Description"/>
+                <FilledInput class = {classes.root} placeholder="Product Name"/>
+                <FilledInput class = {classes.root} placeholder="Product Quantity"/>
                 <FilledInput class = {classes.root} placeholder="Product Price"/>
+                <FilledInput class = {classes.root} placeholder="Product User"/>
+                <FilledInput class = {classes.root} placeholder="Product Date"/>
                 <button class = {classes.formControl} onClick = {handleInputChange}>Submit new product for sale</button>
             </form>
         )

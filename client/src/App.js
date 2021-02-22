@@ -25,7 +25,7 @@ function App() {
         <Route exact path="/Details.js">
           <Details />
         </Route>
-        <Route exact path="/procuts/create">
+        <Route exact path="/products/create">
           <CreateProduct/>
         </Route>
         <Route exact path="/ProfilePage.js">

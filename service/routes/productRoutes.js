@@ -11,7 +11,24 @@ productRouter.route('/')
       }
       res.send(list);
     })
-  });
+  })
+  
+  //DUPLICATED BELOW
+  .post((req, res, next) => {
+    ProductList.create(req.body, (err, newProduct) => {
+      if (err) { 
+        next(err); 
+      } else if (newProduct) {
+          res.status(200);
+          res.send(newProduct);
+      } else {
+          res.status(404);
+          res.send(`Sorry, product ${req.params.name} already exists.`);
+        }
+      });
+    })
+  
+  ;
 
 productRouter.route('/:name')
 

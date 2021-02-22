@@ -23,10 +23,10 @@ function App() {
           <SignUp />
         </Route>
         <Route exact path="/Details.js">
-          <Details />
+          <Details/>
         </Route>
-        <Route exact path="/products/create">
-          <CreateProduct/>
+        <Route exact path="/CreateProduct.js">
+          <CreateProduct />
         </Route>
         <Route exact path="/ProfilePage.js">
           <ProfilePage />

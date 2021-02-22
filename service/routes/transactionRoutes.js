@@ -1,57 +1,108 @@
 const express = require('express');
 const transRouter = express.Router();
-const { transactionsList } = require('../models/Transaction.js');
+const TransactionsList = require('../models/Transaction.js');
 
 transRouter.route('/')
   // Get all transactions
-  .get((req, res) => {
-    res.json(transactionsList);
+  .get((req, res, next) => {
+    TransactionsList.find({}, (err, list) => {
+      if (err) { 
+        next(err) 
+      }
+      res.send(list);
+    })
+  })
+  .post((req, res, next) => {
+    TransactionsList.create(req.body, (err, newTransaction) => {
+      if (err) {
+         next(err) 
+      }
+      res.status(200);
+      res.send(newTransaction);
+    })
+  })
+  .delete((req, res, next) => {
+    const transTitle = req.query.transTitle;
+    if (!transTitle) {
+      res.status(400);
+      res.send({ error: "Must provide transaction title." });
+    }
+    TransactionsList.findOneAndDelete({ transTitle: transTitle }, (err, transaction) => {
+      if (err) 
+      { next(err) 
+      } else if (transaction) {
+        res.status(200);
+        res.send(transaction);
+      } else {
+        res.status(404);
+        res.send({ error: `Couldn't find transaction with  ${transTitle}` });
+      }
+    });
   });
 
+
 transRouter.route('/:transTitle')
-  // Get a single transaction by id
-  .get((req, res) => {
-    const resultTiltle = transactionsList.filter((item) => {
-      return item.transTitle === req.params.transTitle;
+  // Get a single transaction by transTitle
+  .get((req, res, next) => {
+    TransactionsList.findById(req.params.transTitle, (err, transaction) => {
+        if (err) {
+          next(err);
+        } else if (transaction) {
+          res.send(transaction);
+        } else {
+          res.status(404);
+          res.send(`Sorry, transaction title ${req.params.transTitle} does not exist.`);
+        }
+      });
+    })
+  //Creates new transaction
+  .post((req, res, next) => {
+    TransactionsList.create(req.body, (err, newTransaction) => {
+      if (err) { 
+        next(err); 
+      } else if (newTransaction) {
+          res.status(200);
+          res.send(newTransaction);
+      } else {
+          res.status(404);
+          res.send(`Sorry, transaction title ${req.params.transTitle} already exists.`);
+      }
+
     });
-    if (resultTiltle.length === 1){
-      res.send(resultTiltle);
-    } else {
-      res.status(404).send('Sorry, this transaction does not exist');
-    } 
   })
-  //Ceartes new transaction
-  .post((req, res)=>{
-    const resultAdd = transactionsList.filter((item) => {
-      return item.transTitle === req.params.transTitle;
+  //updates transaction
+  .put((req, res, next) => {
+      TransactionsList.findByIdAndUpdate(req.params.id, req.body, (err, transaction) => {
+        if (err) {
+          next(err);
+        } else if (transaction) {
+          TransactionsList.findById(req.params.id, (updateErr, updatedTransaction) => {
+            if (err) {
+              next(updateErr)
+            }
+            res.send(updatedTransaction);
+            res.json({success: true, msg: 'Success! Updated transaction: '+ req.params.transTitle});
+          })
+        } else {
+          res.status(404);
+          res.send(`Sorry, user id ${req.params.id} does not exist.`);
+        }
+      });  
+    })
+
+  //Deletes transaction
+  .delete((req, res, next) => {
+    TransactionsList.findByIdAndDelete(req.params.id, (err, transaction) => {
+      if (err) {
+        next(err);
+      } else if (transaction) {
+        res.sendStatus(200);
+        res.json({success: true, msg: 'Success! Deleted transaction: '+ req.params.transTitle});
+      } else {
+        res.status(404);
+        res.send(`Sorry, transaction title ${req.params.transTitle} does not exist.`);
+        }
+      });
     });
-    if (resultAdd.length === 1){
-      res.status(404).send('Sorry, this transaction is already exist');
-    } else {
-      res.status(200).json({success: true, msg: 'Success! Added transaction: '+ req.params.transTitle });
-    } 
-  })
-  //update transactions
-  .put((req, res) => {
-    const resultUpdate = transactionsList.filter((item) => {
-      return item.transTitle === req.params.transTitle;
-    });
-    if (resultUpdate.length === 1){
-      res.status(200).json({success: true, msg: 'Success! Updated transaction: ' + req.params.transTitle});
-    } else{
-      res.status(404).send('Sorry, this transaction does not exist');
-    } 
-  })
-  //delete transactions
-  .delete((req, res) => {
-    const resultDelete = transactionsList.filter((item) => {
-      return item.transTitle === req.params.transTitle;
-    });
-    if (resultDelete.length === 1){
-      res.status(200).json({success: true, msg: 'Success! Deleted transaction: '+ req.params.transTitle});
-    } else {
-      res.status(404).send('Sorry, this transaction does not exist');
-    } 
-  });
   
   module.exports = transRouter;

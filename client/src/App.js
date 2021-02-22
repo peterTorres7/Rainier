@@ -8,6 +8,7 @@ import SignUp from './components/SignUp';
 import Details from './components/Details';
 import ProfilePage from './components/ProfilePage';
 import CreateProduct from './components/CreateProduct';
+import Transaction from './components/Transactions';
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
         </Route>
         <Route exact path="/ProfilePage.js">
           <ProfilePage />
+        </Route>
+        <Route exact path="/Transaction.js">
+          <Transaction />
         </Route>
         <Route exact path="/">
           <PopularItemGroup></PopularItemGroup>

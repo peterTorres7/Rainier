@@ -73,9 +73,10 @@ import {
             });
      };
 
-    // if (success) {
-    //     return <Redirect to="/item/itemCreated" />;
-    // else {
+    if (success) {
+        return <Redirect to="/item/itemCreated" />;
+    }
+    else {
         return (
             <form
                 onSubmit={handleSubmit}
@@ -90,4 +91,5 @@ import {
                 <button class = {classes.formControl}  onClick={handleInputChange} >Submit new product for sale</button>
             </form>
         )
-    };
+    }
+};

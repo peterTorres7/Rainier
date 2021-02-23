@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
+import AuthButton from './AuthButton';
 import {
     TextField,
     makeStyles,
@@ -83,6 +84,7 @@ import {
                 class={classes.root}
                 id="productCreateForm">
                 Enter Details of Product for sale:
+                <AuthButton>Authentication Button</AuthButton>
                 <TextField class = {classes.root} placeholder="Product Name" value={productFormValues.productQty} onChange={handleInputChange} />
                 <TextField class = {classes.root} placeholder="Product Quantity" value={productFormValues.productQty} />
                 <TextField class = {classes.root} placeholder="Product Price" value={productFormValues.productPrice} />

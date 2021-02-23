@@ -1,57 +1,104 @@
 const express = require('express');
 const productRouter = express.Router();
-const { productsList } = require("../data/products");
+const ProductList  = require("../models/Product");
 
 productRouter.route('/')
-  // Get all products
-  .get((req, res) => {
-    res.json(productsList);
-  });
+  // Get all transactions
+  .get((req, res, next) => {
+    ProductList.find({}, (err, list) => {
+      if (err) { 
+        next(err) 
+      }
+      res.send(list);
+    })
+  })
+  
+  //DUPLICATED BELOW
+  .post((req, res, next) => {
+    ProductList.create(req.body, (err, newProduct) => {
+      if (err) { 
+        next(err); 
+      } else if (newProduct) {
+          res.status(200);
+          res.send(newProduct);
+      } else {
+          res.status(404);
+          res.send(`Sorry, product ${req.params.name} already exists.`);
+        }
+      });
+    })
+  
+  ;
 
-productRouter.route('/:pid')
-  // Get a single product by pid
-  .get((req, res) => {
-    const resultpid = productsList.filter((item) => {
-      return item.pid === req.params.pid;
-    });
-    if (resultpid.length === 1){
-      res.send(resultpid);
-    } else {
-      res.status(404).send('Sorry, this product does not exist');
-    } 
+productRouter.route('/:name')
+
+  // Get a single product by name
+  .get((req, res, next) => {
+    ProductList.findById(req.params.id, (err, product) => {
+          if (err) {
+            next(err);
+          } else if (product) {
+            res.send(product);
+          } else {
+            res.status(404);
+            res.send(`Sorry, product ${req.params.name} does not exist.`);
+          }
+        });
+      })
+
+  //Creates new product
+  .post((req, res, next) => {
+    ProductList.create(req.body, (err, newProduct) => {
+      if (err) { 
+        next(err); 
+      } else if (newProduct) {
+          res.status(200);
+          res.send(newProduct);
+      } else {
+          res.status(404);
+          res.send(`Sorry, product ${req.params.name} already exists.`);
+        }
+      });
+    })
+
+  //updates product
+  .put((req, res, next) => {
+    ProductList.findByIdAndUpdate(req.params.id, req.body, (err, product) => {
+      if (err) {
+        next(err);
+      } else if (product) {
+        ProductsList.findById(req.params.id, (updateErr, updatedProduct) => {
+          if (err) {
+            next(updateErr)
+          }
+          res.send(updatedProduct);
+          res.json({success: true, msg: 'Success! Updated product: '+ req.params.name});
+        })
+      } else {
+        res.status(404);
+        res.send(`Sorry, product ${req.params.id} does not exist.`);
+      }
+    });  
   })
-  //Ceartes new product
-  .post((req, res)=>{
-    const resultAdd = productsList.filter((item) => {
-      return item.pid === req.params.pid;
+
+  //Deletes product
+  .delete((req, res, next) => {
+    ProductList.findByIdAndDelete(req.params.id, (err, product) => {
+      if (err) {
+        next(err);
+      } else if (product) {
+        res.sendStatus(200);
+        res.json({success: true, msg: 'Success! Deleted product: '+ req.params.name});
+      } else {
+        res.status(404);
+        res.send(`Sorry, product ${req.params.name} does not exist.`);
+      }
     });
-    if (resultAdd.length === 1){
-      res.status(404).send('Sorry, this product is already exist');
-    } else {
-      res.status(200).json({success: true, msg: 'Success! Added product: '+ req.params.pid });
-    } 
-  })
-  //update product
-  .put((req, res) => {
-    const resultUpdate = productsList.filter((item) => {
-      return item.pid === req.params.pid;
-    });
-    if (resultUpdate.length === 1){
-      res.status(200).json({success: true, msg: 'Success! Updated product: ' + req.params.pid });
-    } else{
-      res.status(404).send('Sorry, this product does not exist');
-    } 
-  })
-  //delete product
-  .delete((req, res) => {
-    const resultDelete = productsList.filter((item) => {
-      return item.pid === req.params.pid;
-    });
-    if (resultDelete.length === 1){
-      res.status(200).json({success: true, msg: 'Success! Deleted product: ' + req.params.pid});
-    } else {
-      res.status(404).send('Sorry, this product does not exist');
-    } 
   });
+    
 
 module.exports = productRouter;
+
+
+
+  

@@ -1,3 +1,5 @@
 node_modules
 .env
 .eslintcache
+service/node_modules
+service/lib

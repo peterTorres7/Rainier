@@ -1,70 +1,80 @@
 const express = require('express');
 const userRouter = express.Router();
-const { usersList } = require("../data/users");
+const UsersList = require("../models/User");
 
 userRouter.route('/')
   // Get all users
-  .get((req, res) => {
-    res.json(usersList);
+  .get((req, res, next) => {
+    UsersList.find({}, (err, list) => {
+      if (err) { 
+        next(err) 
+      }
+      res.send(list);
+    })
   });
 
-userRouter.route('/:uid')
+userRouter.route('/:id')
   // Get a single user by id
-  .get((req, res) => {
-    const resultID = usersList.filter((item) => {
-      return item.uid === req.params.uid;
+  .get((req, res, next) => {
+    UsersList.findById(req.params.id, (err, user) => {
+      if (err) {
+        next(err);
+      } else if (user) {
+        res.send(user);
+      } else {
+        res.status(404);
+        res.send(`Sorry, user id ${req.params.id} does not exist.`);
+      }
     });
-    if (resultID.length === 1){
-      res.send(resultID);
-    } else {
-      res.status(404).send('Sorry, this user does not exist');
-    } 
   })
+
   //Ceartes new user
-  .post((req, res)=>{
-    const resultAdd = usersList.filter((item) => {
-      return item.uid === req.params.uid;
-    });
-    if (resultAdd.length === 1){
-      res.status(404).send('Sorry, this user is already exist');
-    } else {
-      res.status(200).json({success: true, msg: 'Success! Added user: '+ req.params.uid });
-    } 
+  .put((req, res, next) => {
+    UsersList.findByIdAndUpdate(req.params.id, req.body, (err, user) => {
+      if (err) {
+        next(err);
+      } else if (user) {
+        UsersList.findById(req.params.id, (updateErr, updatedUser) => {
+          if (err) {
+            next(updateErr)
+          }
+          res.send(updatedUser)
+        })
+      } else {
+        res.status(404);
+        res.send(`Sorry, user id ${req.params.id} does not exist.`);
+
+      }
+    });  
   })
-  //update user
-  .put((req, res) => {
-    const resultUpdate = usersList.filter((item) => {
-      return item.uid === req.params.uid;
-    });
-    if (resultUpdate.length === 1){
-      res.status(200).json({success: true, msg: 'Success! Updated user: ' + req.params.uid});
-    } else{
-      res.status(404).send('Sorry, this user does not exist');
-    } 
-  })
+
   //delete user
-  .delete((req, res) => {
-    const resultDelete = usersList.filter((item) => {
-      return item.uid === req.params.uid;
+  .delete((req, res, next) => {
+    UsersList.findByIdAndDelete(req.params.id, (err, user) => {
+      if (err) {
+        next(err);
+      } else if (user) {
+        res.sendStatus(200);
+        res.json({success: true, msg: 'Success! Deleted user: '+ req.params.userName});
+      } else {
+        res.status(404);
+        res.send(`Sorry, user id ${req.params.id} does not exist.`);
+      }
     });
-    if (resultDelete.length === 1){
-      res.status(200).json({success: true, msg: 'Success! Deleted user: '+ req.params.uid});
-    } else {
-      res.status(404).send('Sorry, this user does not exist');
-    } 
   });
 
 // Get a single user by name
 userRouter.get('/:fname', (req, res) => {
-  const resultFName = usersList.filter((itemID) => {
-    return itemID.fName === req.params.fName;
-  });
-  if (resultFName.length === 1){
-    res.send(resultFName);
-  } else{
-    res.status(404).send('Sorry, this user does not exist');
-  } 
+  UsersList.findOne(req.params.fName, (err, user) => {
+    if (err) {
+      next(err);
+    } else if (user) {
+      res.send(user);
+    } else {
+      res.status(404);
+      res.send(`Sorry, user name ${req.params.fName} does not exist.`);
+    }
+  }); 
 });
-
 
 module.exports = userRouter;

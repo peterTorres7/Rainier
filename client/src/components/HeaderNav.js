@@ -12,6 +12,8 @@ import {
 } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import rainierLogo from '../images/mtRainier.png';
+import AuthButtonGroup from './Auth/AuthButtonGroup';
+
 const useStyles = makeStyles((theme) => ({
 
     iconButton: {
@@ -79,18 +81,10 @@ export default function HeaderNav() {
                     <InputBase className={classes.searchInput} placeholder="Search..." />
                     </form>
                 </div>
-                <Button className={classes.logIn} component={Link} to={'/Login.js'}  size="small" color="primary">
-                    Log In
-                </Button>
-                <Button className={classes.signUp} component={Link} to={'/SignUp.js'}  size="small" color="primary">
-                    Sign Up
-                </Button>
-                <Button className={classes.transaction} component={Link} to={'/Transaction.js'}  size="small" color="primary">
-                    Transactions
-                </Button>
                 <Button className={classes.createProduct} component={Link} to={'/CreateProduct.js'}  size="small" color="primary">
                     Sell Product
                 </Button>
+                <AuthButtonGroup />
             </Toolbar>
         </AppBar>
         

@@ -3,10 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+import { CssBaseline, ThemeProvider, createMuiTheme } from '@material-ui/core';
+import AuthProviderWithHistory from './components/Auth/AuthProviderWithHistory';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider>
+      <CssBaseline />
+      <BrowserRouter>
+        <AuthProviderWithHistory>
+          <App />
+        </AuthProviderWithHistory>
+      </BrowserRouter>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

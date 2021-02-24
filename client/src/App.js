@@ -8,7 +8,7 @@ import SignUp from './components/SignUp';
 import Details from './components/Details';
 import ProfilePage from './components/ProfilePage';
 import CreateProduct from './components/CreateProduct';
-import Transaction from './components/Transactions';
+import { useAuth0 } from '@auth0/auth0-react';
 
 function App() {
   return (
@@ -31,7 +31,7 @@ function App() {
         <Route exact path="/ProfilePage.js">
           <ProfilePage />
         </Route>
-        <Route exact path="/Transaction.js">
+        <Route exact path="/Transactions.js">
           <Transaction />
         </Route>
         <Route exact path="/">

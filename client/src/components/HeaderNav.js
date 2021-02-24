@@ -12,6 +12,8 @@ import {
 } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import rainierLogo from '../images/mtRainier.png';
+import AuthButtonGroup from './Auth/AuthButtonGroup';
+
 const useStyles = makeStyles((theme) => ({
 
     iconButton: {
@@ -91,6 +93,7 @@ export default function HeaderNav() {
                 <Button className={classes.createProduct} component={Link} to={'/CreateProduct.js'}  size="small" color="primary">
                     Sell Product
                 </Button>
+                <AuthButtonGroup />
             </Toolbar>
         </AppBar>
         

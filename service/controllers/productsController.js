@@ -1,6 +1,6 @@
 const dateFns = require("date-fns");
 
-const Event = require("../models/Product");
+const Product = require("../models/Product");
 
 exports.createProduct = (req, res, next) => {
   const date = req.body.date;
@@ -13,7 +13,7 @@ exports.createProduct = (req, res, next) => {
     new Date()
   );
 
-  if (!dateFns.isFuture(eventDate)) {
+  if (!dateFns.isFuture(productDate)) {
     res.sendStatus(400);
     res.send({ error: "Product posted date must be in the future" });
   }

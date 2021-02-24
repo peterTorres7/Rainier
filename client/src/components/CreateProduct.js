@@ -13,11 +13,11 @@ import {
  } from "@material-ui/core";
 
  const defaultFormValues = {
-     productName: "",
-     productQty: '',
-     productPrice: '',
-     productUser: '',
-     productDate: '',
+     name: "",
+     qty: '',
+     price: '',
+     user: '',
+     date: '',
  };
 
  const useStyles = makeStyles((theme) => ({
@@ -64,11 +64,11 @@ import {
                 Authorization: `Bearer ${authToken}`,
              },
              data: {
-                 productName: productFormValues.productName,
-                 qty: productFormValues.productQty,
+                 name: productFormValues.name,
+                 qty: productFormValues.qty,
                  price: productFormValues.price,
-                 user: productFormValues.productUser,
-                 date: productFormValues.productDate,
+                 user: productFormValues.user,
+                 date: productFormValues.date,
              },
          };
 
@@ -93,11 +93,11 @@ import {
                 id="productCreateForm">
                 Enter Details of Product for sale:
                 {/* <AuthButton>Authentication Button</AuthButton> */}
-                <TextField class = {classes.root} placeholder="Product Name" value={productFormValues.productName} onChange={handleInputChange} />
-                <TextField class = {classes.root} placeholder="Product Quantity" value={productFormValues.productQty} />
-                <TextField class = {classes.root} placeholder="Product Price" value={productFormValues.productPrice} />
-                <TextField class = {classes.root} placeholder="Product User" value={productFormValues.productUser} />
-                <TextField class = {classes.root} placeholder="Product Date" value={productFormValues.productDate} />
+                <TextField id = "name" class = {classes.root} placeholder="Product Name" value={productFormValues.name} onChange={handleInputChange} />
+                <TextField id = "qty" class = {classes.root} placeholder="Product Quantity" value={productFormValues.qty} />
+                <TextField id = "price" class = {classes.root} placeholder="Product Price" value={productFormValues.price} />
+                <TextField id = "user" class = {classes.root} placeholder="Product User" value={productFormValues.user} />
+                <TextField id = "date" class = {classes.root} placeholder="Product Date" value={productFormValues.date} />
                 <button class = {classes.formControl}  onClick={handleInputChange} >Submit new product for sale</button>
             </form>
         )

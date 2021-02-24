@@ -12,7 +12,7 @@ import {
 } from "@material-ui/core";
 import {Link} from 'react-router-dom';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     details: {
         marginLeft: "40px",
         backgroundColor: "#7AD628",
@@ -21,6 +21,7 @@ const useStyles = makeStyles({
         height: 150,
     },
     root: {
+        padding: theme.spacing(1),
         maxWidth: 350,
         marginLeft: "25px",
         backgroundColor: "#28B1D6",
@@ -28,7 +29,7 @@ const useStyles = makeStyles({
     seller: {
         backgroundColor: "#7AD628"
     },
-});
+}));
 
 export default function PopularItem() {
     const classes = useStyles();

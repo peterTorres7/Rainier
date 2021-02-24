@@ -1,6 +1,5 @@
 import './App.css';
 import {BrowserRouter, Switch, Route} from "react-router-dom";
-import Header from './components/Header';
 import HeaderNav from './components/HeaderNav';
 import PopularItemGroup from './components/PopularItemGroup';
 import Login from './components/Login';
@@ -13,7 +12,6 @@ import Transaction from './components/Transactions';
 function App() {
   return (
     <BrowserRouter>
-      <Header />
       <HeaderNav />
       <Switch>
         <Route path="/Login.js">

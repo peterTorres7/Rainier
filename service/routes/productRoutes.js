@@ -1,5 +1,8 @@
 const express = require('express');
 const productRouter = express.Router();
+const jwt = require('express-jwt');
+const jwks = require('jwks-rsa')
+
 const ProductList  = require("../models/Product");
 
 productRouter.route('/')

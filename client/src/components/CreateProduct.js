@@ -7,9 +7,7 @@ import axios from "axios";
 import {
     TextField,
     makeStyles,
-    FormContorl,
-    Input,
-    InputLabel,
+    Select,
  } from "@material-ui/core";
 
  const defaultFormValues = {
@@ -89,11 +87,25 @@ import {
         return (
             <form
                 onSubmit={handleSubmit}
-                class={classes.root}
-                id="productCreateForm">
+                className={classes.root}
+                id="productCreateForm"
+                >
                 Enter Details of Product for sale:
                 {/* <AuthButton>Authentication Button</AuthButton> */}
-                <TextField id = "name" class = {classes.root} placeholder="Product Name" value={productFormValues.name} onChange={handleInputChange} />
+                <TextField 
+                    id = "name" 
+                    className = {classes.root} 
+                    placeholder="Product Name" 
+                    value={productFormValues.name} 
+                    onChange={handleInputChange} 
+                    name="productName"
+                />
+                
+                
+                <Select>select?</Select>
+                
+                
+                
                 <TextField id = "qty" class = {classes.root} placeholder="Product Quantity" value={productFormValues.qty} />
                 <TextField id = "price" class = {classes.root} placeholder="Product Price" value={productFormValues.price} />
                 <TextField id = "user" class = {classes.root} placeholder="Product User" value={productFormValues.user} />

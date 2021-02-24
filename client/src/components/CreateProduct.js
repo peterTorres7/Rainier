@@ -38,7 +38,7 @@ import {
     },
  }));
 
- function CreateProduct() {
+ export default function CreateProduct() {
      const classes = useStyles();
      const [productFormValues, setProductFormValues] = useState(defaultFormValues);
      const [success, setSuccess] = useState(false);
@@ -47,7 +47,7 @@ import {
      const handleInputChange = (event) => {
          const { name, value } = event.target;
          setProductFormValues({
-             ...setProductFormValues,
+             ...productFormValues,
             [name] : value,
          });
      };
@@ -57,8 +57,8 @@ import {
          const authToken = await getAccessTokenSilently();
 
          const requestConfig = {
-             url: "http://localhost:4000/api/v1/products/",
-             method: "post",
+             url: 'http://localhost:4000/api/v1/products/',
+             method: 'post',
              headers: { 
                 'Content-Type' : 'application/json',
                 Authorization: `Bearer ${authToken}`,
@@ -104,6 +104,7 @@ import {
     }
 };
     
-export default withAuthenticationRequired(CreateProduct, {
+//export default 
+withAuthenticationRequired(CreateProduct, {
     returnTo: () => '/item/CreateProduct',
 });

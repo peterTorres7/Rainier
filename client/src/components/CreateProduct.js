@@ -7,9 +7,7 @@ import axios from "axios";
 import {
     TextField,
     makeStyles,
-    FormContorl,
-    Input,
-    InputLabel,
+    Select,
  } from "@material-ui/core";
 
  const defaultFormValues = {
@@ -38,7 +36,7 @@ import {
     },
  }));
 
- function CreateProduct() {
+ export default function CreateProduct() {
      const classes = useStyles();
      const [productFormValues, setProductFormValues] = useState(defaultFormValues);
      const [success, setSuccess] = useState(false);
@@ -47,7 +45,7 @@ import {
      const handleInputChange = (event) => {
          const { name, value } = event.target;
          setProductFormValues({
-             ...setProductFormValues,
+             ...productFormValues,
             [name] : value,
          });
      };
@@ -57,8 +55,8 @@ import {
          const authToken = await getAccessTokenSilently();
 
          const requestConfig = {
-             url: "http://localhost:4000/api/v1/products/",
-             method: "post",
+             url: 'http://localhost:4000/api/v1/products/',
+             method: 'post',
              headers: { 
                 'Content-Type' : 'application/json',
                 Authorization: `Bearer ${authToken}`,
@@ -89,11 +87,25 @@ import {
         return (
             <form
                 onSubmit={handleSubmit}
-                class={classes.root}
-                id="productCreateForm">
+                className={classes.root}
+                id="productCreateForm"
+                >
                 Enter Details of Product for sale:
                 {/* <AuthButton>Authentication Button</AuthButton> */}
-                <TextField id = "name" class = {classes.root} placeholder="Product Name" value={productFormValues.name} onChange={handleInputChange} />
+                <TextField 
+                    id = "name" 
+                    className = {classes.root} 
+                    placeholder="Product Name" 
+                    value={productFormValues.name} 
+                    onChange={handleInputChange} 
+                    name="productName"
+                />
+                
+                
+                <Select>select?</Select>
+                
+                
+                
                 <TextField id = "qty" class = {classes.root} placeholder="Product Quantity" value={productFormValues.qty} />
                 <TextField id = "price" class = {classes.root} placeholder="Product Price" value={productFormValues.price} />
                 <TextField id = "user" class = {classes.root} placeholder="Product User" value={productFormValues.user} />
@@ -104,6 +116,7 @@ import {
     }
 };
     
-export default withAuthenticationRequired(CreateProduct, {
+//export default 
+withAuthenticationRequired(CreateProduct, {
     returnTo: () => '/item/CreateProduct',
 });

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { withAuthenticationRequired, useAuth0 } from '@auth0/auth0-react';
 import axios from "axios";
-// import AuthButton from './AuthButton';
 
 import {
     TextField,
@@ -28,7 +27,6 @@ import {
          margin: theme.spacing(5),
      },
      formControl: {
-         //margin: theme.spacing(5),
          padding: 20,             
     },
     title: {
@@ -44,6 +42,7 @@ import {
 
      const handleInputChange = (event) => {
          const { name, value } = event.target;
+         console.log('value', value);
          setProductFormValues({
              ...productFormValues,
             [name] : value,
@@ -59,7 +58,7 @@ import {
              method: 'post',
              headers: { 
                 'Content-Type' : 'application/json',
-                Authorization: `Bearer ${authToken}`,
+                 Authorization: `Bearer ${authToken}`,
              },
              data: {
                  name: productFormValues.name,
@@ -91,7 +90,6 @@ import {
                 id="productCreateForm"
                 >
                 Enter Details of Product for sale:
-                {/* <AuthButton>Authentication Button</AuthButton> */}
                 <TextField 
                     id = "name" 
                     className = {classes.root} 
@@ -100,11 +98,7 @@ import {
                     onChange={handleInputChange} 
                     name="productName"
                 />
-                
-                
-                <Select>select?</Select>
-                
-                
+                              
                 
                 <TextField id = "qty" class = {classes.root} placeholder="Product Quantity" value={productFormValues.qty} />
                 <TextField id = "price" class = {classes.root} placeholder="Product Price" value={productFormValues.price} />

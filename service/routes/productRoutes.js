@@ -1,37 +1,38 @@
 const express = require('express');
 const productRouter = express.Router();
 const jwt = require('express-jwt');
-const jwks = require('jwks-rsa')
+const jwks = require('jwks-rsa');
 
 const ProductList  = require("../models/Product");
 
 productRouter.route('/')
   // Get all transactions
   .get((req, res, next) => {
-    ProductList.find({}, (err, list) => {
+    ProductList.find({}, (err, products) => {
       if (err) { 
         next(err) 
-      }
-      res.send(list);
-    })
-  })
+      } else {
+        res.send(products);
+    }
+  });
+});
   
   //DUPLICATED BELOW
-  .post((req, res, next) => {
-    ProductList.create(req.body, (err, newProduct) => {
-      if (err) { 
-        next(err); 
-      } else if (newProduct) {
-          res.status(200);
-          res.send(newProduct);
-      } else {
-          res.status(404);
-          res.send(`Sorry, product ${req.params.name} already exists.`);
-        }
-      });
-    })
+  // .post((req, res, next) => {
+  //   ProductList.create(req.body, (err, newProduct) => {
+  //     if (err) { 
+  //       next(err); 
+  //     } else if (newProduct) {
+  //         res.status(200);
+  //         res.send(newProduct);
+  //     } else {
+  //         res.status(404);
+  //         res.send(`Sorry, product ${req.params.name} already exists.`);
+  //       }
+  //     });
+  //   })
   
-  ;
+  // ;
 
 productRouter.route('/:name')
 
@@ -50,19 +51,19 @@ productRouter.route('/:name')
       })
 
   //Creates new product
-  .post((req, res, next) => {
-    ProductList.create(req.body, (err, newProduct) => {
-      if (err) { 
-        next(err); 
-      } else if (newProduct) {
-          res.status(200);
-          res.send(newProduct);
-      } else {
-          res.status(404);
-          res.send(`Sorry, product ${req.params.name} already exists.`);
-        }
-      });
-    })
+  // .post((req, res, next) => {
+  //   ProductList.create(req.body, (err, newProduct) => {
+  //     if (err) { 
+  //       next(err); 
+  //     } else if (newProduct) {
+  //         res.status(200);
+  //         res.send(newProduct);
+  //     } else {
+  //         res.status(404);
+  //         res.send(`Sorry, product ${req.params.name} already exists.`);
+  //       }
+  //     });
+  //   })
 
   //updates product
   .put((req, res, next) => {
@@ -99,6 +100,28 @@ productRouter.route('/:name')
     });
   });
     
+  const jwtCheck = jwt({
+    sectret: jwks.expressJwtSecret({
+      cache: true,
+      rateLimit: true,
+      jwksRequrestsPerMinute: 5,
+      jwksUri: 'dev-chq8gp3f.us.auth0.com'
+    }),
+    audience: '',
+    issuer: '',
+    algorithms: '',
+  })
+  productRouter.use(jwtCheck);
+
+  productRouter.route('/')
+    .post((req, res, next) =>  {
+      const { permissions } = req.user;
+      if (permissions.includes('manage:products')) {
+        next();
+      } else {
+        res.sendStatus(403);
+      }
+    }, productController.CreateProduct);
 
 module.exports = productRouter;
 

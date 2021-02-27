@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
     search: {
         borderRadius: theme.shape.borderRadius,
         backgroundColor: "#ADFBEE",
+        marginRight: '20px',
     },
     searchIcon: {
         padding: theme.spacing(2, 2, 1, 2),
@@ -48,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
     },
     searchInput: {
-        padding: theme.spacing(1, 1, 1, 0),
+        padding: theme.spacing(1, 1, 1, 1),
         paddingLeft: theme.spacing(6),
     },
     title: {

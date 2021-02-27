@@ -4,7 +4,7 @@ import {
     Card,
     CardActionArea,
     CardActions,
-    CardContent,
+CardContent,
     CardMedia,
     Button,
     Typography,
@@ -14,24 +14,26 @@ import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     details: {
-        marginLeft: "40px",
         backgroundColor: "#7AD628",
+        textAlign: 'center',
     },
     media: {
-        height: 150,
+        height: '150px',
     },
     root: {
         padding: theme.spacing(1),
-        maxWidth: 350,
-        marginLeft: "25px",
+        maxWidth: '350px',
+        marginLeft: "20px",
+        marginBottom: '20px',
         backgroundColor: "#28B1D6",
     },
     seller: {
-        backgroundColor: "#7AD628"
+        backgroundColor: "#7AD628",
+        textAlign: 'center',
     },
 }));
 
-export default function PopularItem() {
+export default function PopularItem({ event }) {
     const classes = useStyles();
     return (
         <Card className={classes.root}>
@@ -45,10 +47,10 @@ export default function PopularItem() {
                 />
                 <CardContent>
                     <Typography variant="h4" component="h2">
-                        Popular Item
+                        {/* {event.name} */}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        Suspendisse malesuada mauris libero, vitae tempor eros tempor sed.
+                        {/* {event.price} */}
                     </Typography>
                 </CardContent>
             </CardActionArea>

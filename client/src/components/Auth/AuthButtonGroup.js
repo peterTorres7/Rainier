@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 
-import LoginSignUp from './LoginSignUp';
+import LoginSignUp from './LoginSignup';
 import Logout from './Logout';
 
 export default function AuthButtonGroup() {

@@ -22,6 +22,7 @@ class PopularItemProvider extends React.Component {
 
         axios(requestConfig)
           .then((response) => {
+              console.log(response.data);
               this.setState({
                   events: response.data,
                   loading: false,

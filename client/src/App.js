@@ -9,6 +9,7 @@ import ProfilePage from './components/ProfilePage';
 import CreateProduct from './components/CreateProduct';
 import Transaction from './components/Transactions';
 import { useAuth0 } from '@auth0/auth0-react';
+import PopularItemProvider from './components/PopularItemProvider';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route exact path="/">
           <PopularItemGroup></PopularItemGroup>
           <PopularItemGroup></PopularItemGroup>
+          <PopularItemProvider />
         </Route>
       </Switch>
     </BrowserRouter>

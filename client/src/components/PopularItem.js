@@ -1,5 +1,4 @@
 import React from 'react';
-import './PopularItem.css';
 import {
     Card,
     CardActionArea,
@@ -13,23 +12,32 @@ CardContent,
 import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
-    details: {
-        backgroundColor: "#7AD628",
-        textAlign: 'center',
-    },
+
     media: {
-        height: '150px',
+        display: 'flex',
+        width: '100vw',
     },
     root: {
+        display: 'inline',
         padding: theme.spacing(1),
-        maxWidth: '350px',
+        maxWidth: '100%',
         marginLeft: "20px",
         marginBottom: '20px',
         backgroundColor: "#28B1D6",
     },
     seller: {
-        backgroundColor: "#7AD628",
+        display: 'inline',
         textAlign: 'center',
+        width: '50vw',
+        backgroundColor: '#c2debd',
+        color: '#3d804f',
+    },
+    details: {
+        display: 'inline',
+        textAlign: 'center',
+        width: '50vw',
+        backgroundColor: '#c2debd',
+        color: '#3d804f',
     },
 }));
 
@@ -37,6 +45,7 @@ export default function PopularItem({ event }) {
     const classes = useStyles();
     return (
         <Card className={classes.root}>
+            <>
             <CardActionArea>
                 <CardMedia 
                     className={classes.media}
@@ -62,6 +71,7 @@ export default function PopularItem({ event }) {
                     Contact Seller
                     </Button>     
             </CardActions>
+            </>
         </Card>
     )
 }

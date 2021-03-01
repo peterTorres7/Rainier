@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#28B1D6",
     },
     gridList: {
-        flexWrap: 'nowrap',
+        flexWrap: '100%',
     }
 }));
 

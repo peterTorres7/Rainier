@@ -17,7 +17,7 @@ export default function PopularItemContainer({events}) {
         <div className={classes.root}>
             <Grid container direction='column'>
                 <Grid item className={classes.featuredItem}>
-                    <Typography variant='h3'>Latest Items</Typography>
+                    <Typography variant='h3'>Popular Items</Typography>
                 </Grid>
                 <PopularItemList events={events} />
             </Grid>

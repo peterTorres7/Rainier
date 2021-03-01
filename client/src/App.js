@@ -35,8 +35,6 @@ function App() {
           <Transaction />
         </Route>
         <Route exact path="/">
-          <PopularItemGroup></PopularItemGroup>
-          <PopularItemGroup></PopularItemGroup>
           <PopularItemProvider />
         </Route>
       </Switch>

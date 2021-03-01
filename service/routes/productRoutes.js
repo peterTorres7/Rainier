@@ -6,8 +6,7 @@ const jwks = require('jwks-rsa');
 const ProductList  = require("../models/Product");
 
 const productController = require('../controllers/productsController')
-const jwt = require('express-jwt');
-const jwks = require('jwks-rsa');
+
 
 productRouter.route('/')
   // Get all products

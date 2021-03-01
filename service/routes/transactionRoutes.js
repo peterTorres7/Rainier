@@ -14,10 +14,10 @@ transRouter.route('/')
   });
 
 
-transRouter.route('/:transTitle')
-  // Get a single transaction by transTitle
+transRouter.route('/:id')
+  // Get a single transaction by id
   .get((req, res, next) => {
-    TransactionsList.findById(req.params.transTitle, (err, transaction) => {
+    TransactionsList.findById(req.params.id, (err, transaction) => {
         if (err) {
           next(err);
         } else if (transaction) {

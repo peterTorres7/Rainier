@@ -11,7 +11,7 @@ import {
  } from "@material-ui/core";
 
  const defaultFormValues = {
-     name: "",
+     name: '',
      qty: '',
      price: '',
      user: '',
@@ -43,7 +43,7 @@ import {
 
      const handleInputChange = (event) => {
          const { name, value } = event.target;
-         console.log('value', value);
+         console.log('name ', name, ' value ', value);
          setProductFormValues({
              ...productFormValues,
             [name] : value,
@@ -51,6 +51,8 @@ import {
      };
 
      const handleSubmit = async (event) => {
+         console.log('event', event);
+         console.log("hello?");
          event.preventDefault();
          const authToken = await getAccessTokenSilently();
 
@@ -61,6 +63,7 @@ import {
                 'Content-Type' : 'application/json',
                  Authorization: `Bearer ${authToken}`,
              },
+             //unpacking
              data: {
                  name: productFormValues.name,
                  qty: productFormValues.qty,
@@ -76,7 +79,7 @@ import {
                 console.log(`Product created ${response.data}`);
             })
             .catch((err) => {
-                console.log("error");
+                console.log("error ", err);
             });
      };
 
@@ -141,7 +144,9 @@ import {
                         className= {classes.formControl}  
                         type="submit"
                         form="productCreateForm"
-                    >Submidt new product for sale</button>
+                    >
+                      Submit new product for sale
+                    </button>
                 </form>
             </Container>
         )

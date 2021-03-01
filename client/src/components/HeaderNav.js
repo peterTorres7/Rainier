@@ -81,7 +81,7 @@ export default function HeaderNav() {
                     <InputBase className={classes.searchInput} placeholder="Search..." />
                     </form>
                 </div>
-                <Button className={classes.createProduct} component={Link} to={'/CreateProduct.js'}  size="small" color="primary">
+                <Button className={classes.createProduct} component={Link} to={'/CreateProduct'}  size="small" color="primary">
                     Sell Product
                 </Button>
                 <AuthButtonGroup />

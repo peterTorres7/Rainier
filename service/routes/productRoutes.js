@@ -1,6 +1,9 @@
 const express = require('express');
 const productRouter = express.Router();
 const ProductList  = require("../models/Product");
+const productController = require('../controllers/productsController')
+const jwt = require('express-jwt');
+const jwks = require('jwks-rsa');
 
 productRouter.route('/')
   // Get all transactions
@@ -9,29 +12,14 @@ productRouter.route('/')
       if (err) { 
         next(err) 
       }
-      res.send(list);
-    })
+      else {
+        res.send(list)
+      }
+    });
   })
-  
-  //DUPLICATED BELOW
-  .post((req, res, next) => {
-    ProductList.create(req.body, (err, newProduct) => {
-      if (err) { 
-        next(err); 
-      } else if (newProduct) {
-          res.status(200);
-          res.send(newProduct);
-      } else {
-          res.status(404);
-          res.send(`Sorry, product ${req.params.name} already exists.`);
-        }
-      });
-    })
-  
-  ;
+  .post(productController.createProduct);
 
-productRouter.route('/:name')
-
+productRouter.route('/:id')
   // Get a single product by name
   .get((req, res, next) => {
     ProductList.findById(req.params.id, (err, product) => {
@@ -41,7 +29,7 @@ productRouter.route('/:name')
             res.send(product);
           } else {
             res.status(404);
-            res.send(`Sorry, product ${req.params.name} does not exist.`);
+            res.send(`Sorry, product ${req.params.id} does not exist.`);
           }
         });
       })
@@ -56,7 +44,7 @@ productRouter.route('/:name')
           res.send(newProduct);
       } else {
           res.status(404);
-          res.send(`Sorry, product ${req.params.name} already exists.`);
+          res.send(`Sorry, product ${req.params.id} already exists.`);
         }
       });
     })
@@ -72,7 +60,7 @@ productRouter.route('/:name')
             next(updateErr)
           }
           res.send(updatedProduct);
-          res.json({success: true, msg: 'Success! Updated product: '+ req.params.name});
+          res.json({success: true, msg: 'Success! Updated product: '+ req.params.id});
         })
       } else {
         res.status(404);
@@ -88,14 +76,48 @@ productRouter.route('/:name')
         next(err);
       } else if (product) {
         res.sendStatus(200);
-        res.json({success: true, msg: 'Success! Deleted product: '+ req.params.name});
+        res.json({success: true, msg: 'Success! Deleted product: '+ req.params.id});
       } else {
         res.status(404);
-        res.send(`Sorry, product ${req.params.name} does not exist.`);
+        res.send(`Sorry, product ${req.params.id} does not exist.`);
       }
     });
   });
-    
+
+
+  const jwtCheck = jwt({
+    secret: jwks.expressJwtSecret({
+        cache: true,
+        rateLimit: true,
+        jwksRequestsPerMinute: 5,
+        jwksUri: 'https://dev-chq8gp3f.us.auth0.com/.well-known/jwks.json'
+  }),
+  audience: 'http://rainier-api',
+  issuer: 'https://dev-chq8gp3f.us.auth0.com/',
+  algorithms: ['RS256']
+  });
+  
+  productRouter.use(jwtCheck);
+  
+  //app.get('/authorized', function (req, res) {
+    //  res.send('Secured Resource');
+  //});
+  
+  productRouter.route('/')
+  //DUPLICATED BELOW
+  .post((req, res, next) => {
+    ProductList.create(req.body, (err, newProduct) => {
+      if (err) { 
+        next(err); 
+      } else if (newProduct) {
+          res.status(200);
+          res.send(newProduct);
+      } else {
+          res.status(404);
+          res.send(`Sorry, product ${req.params.id} already exists.`);
+        }
+      });
+    });
 
 module.exports = productRouter;
 

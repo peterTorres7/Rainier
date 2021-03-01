@@ -18,7 +18,13 @@
   },
   "homepage": "https://github.com/peterTorres7/Rainier#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "helmet": "^4.4.1",
+    "jwks-rsa": "^1.12.3",
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.7"
   }
 }

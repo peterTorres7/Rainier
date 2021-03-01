@@ -2,6 +2,7 @@ const express = require('express');
 const productRouter = express.Router();
 const jwt = require('express-jwt');
 const jwks = require('jwks-rsa');
+
 const ProductList  = require("../models/Product");
 const productController = require('../controllers/productsController');
 
@@ -11,11 +12,6 @@ productRouter.route('/')
     ProductList.find({}, (err, products) => {
       if (err) { 
         next(err) 
-      }else{
-      res.send(products);
-      }
-    });
-  });
 
 productRouter.route('/:id')
 
@@ -33,7 +29,6 @@ productRouter.route('/:id')
         });
       })
             
-  //Creates new product
   .post((req, res, next) => {
     ProductList.create(req.body, (err, newProduct) => {
       if (err) { 
@@ -82,6 +77,7 @@ productRouter.route('/:id')
       }
     });
   });
+
 
   const jwtCheck = jwt({
     secret: jwks.expressJwtSecret({

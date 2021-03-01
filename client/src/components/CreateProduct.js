@@ -6,6 +6,7 @@ import axios from "axios";
 import {
     TextField,
     makeStyles,
+    Container,
     Select,
  } from "@material-ui/core";
 
@@ -87,65 +88,67 @@ import {
     }
     else {
         return (
-            <form
-                onSubmit={handleSubmit}
-                className={classes.root}
-                id="productCreateForm"
-                >
-                Enter Details of Product for sale:
-                <TextField 
-                    id = "name" 
-                    className = {classes.root} 
-                    placeholder="Product Name" 
-                    value={productFormValues.productName} 
-                    onChange={handleInputChange} 
-                    name="productName"
-                />
+            <Container>
+                <form
+                    onSubmit={handleSubmit}
+                    className={classes.root}
+                    id="productCreateForm"
+                    >
+                    Enter Details of Product for sale:
+                    <TextField 
+                        id = "name" 
+                        className = {classes.root} 
+                        placeholder="Product Name" 
+                        defaultValue={productFormValues.name} 
+                        onChange={handleInputChange} 
+                        name="productName"
+                    />
 
-                <TextField 
-                    id = "qty" 
-                    className = {classes.root} 
-                    placeholder="Product Quantity" 
-                    value={productFormValues.productQty} 
-                    onChange={handleInputChange} 
-                    name="productQty"
-                />
+                    <TextField 
+                        id = "qty" 
+                        className= {classes.root} 
+                        placeholder="Product Quantity" 
+                        defaultValue={productFormValues.qty} 
+                        onChange={handleInputChange} 
+                        name="productQty"
+                    />
 
-                <TextField 
-                    id = "price" 
-                    className = {classes.root} 
-                    placeholder="Product Price" 
-                    value={productFormValues.productPrice} 
-                    onChange={handleInputChange} 
-                    name="productPrice"
-                />
+                    <TextField 
+                        id = "price" 
+                        className= {classes.root} 
+                        placeholder="Product Price" 
+                        defaultValue={productFormValues.price} 
+                        onChange={handleInputChange} 
+                        name="productPrice"
+                    />
 
-                <TextField 
-                    id = "user" 
-                    className = {classes.root} 
-                    placeholder="Product User" 
-                    value={productFormValues.productUser} 
-                    onChange={handleInputChange} 
-                    name="productUser"
-                />
+                    <TextField 
+                        id = "user" 
+                        className= {classes.root} 
+                        placeholder="Product User" 
+                        defaultValue={productFormValues.user} 
+                        onChange={handleInputChange} 
+                        name="productUser"
+                    />
 
-                <TextField 
-                    id = "date" 
-                    className = {classes.root} 
-                    placeholder="Listing Date" 
-                    value={productFormValues.productDate} 
-                    onChange={handleInputChange} 
-                    name="productDate"
-                />
+                    <TextField 
+                        id = "date" 
+                        className= {classes.root} 
+                        placeholder="Product Date" 
+                        defaultValue={productFormValues.date}
+                        onChange={handleInputChange} 
+                        name="productDate" 
+                    />
 
-                <button 
-                    className={classes.formControl}
-                    form="productCreateForm"
-                    type="submit"
-                >
-                    Submit new product for sale
-                </button>
-            </form>
+                    <button 
+                        className= {classes.formControl}  
+                        type="submit"
+                        form="productCreateForm"
+                    >
+                      Submit new product for sale
+                    </button>
+                </form>
+            </Container>
         )
     }
 };

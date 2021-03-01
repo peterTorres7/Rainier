@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 require('dotenv').config({ path: '../.env' });
 
 //const morgan = require('morgan');
-//const cors = require('cors');
+const cors = require('cors');
 
 const user = process.env.MONGO_USER;
 const password = process.env.MONGO_PASS;
@@ -29,7 +29,7 @@ db.on('close', () => { console.log("MongoDB connection closed") });
 
 // Middleware
 //app.use(morgan('tiny'));
-//app.use(cors());
+app.use(cors());
 app.use(express.json())
 
 

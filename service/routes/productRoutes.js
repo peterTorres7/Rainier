@@ -4,7 +4,9 @@ const jwt = require('express-jwt');
 const jwks = require('jwks-rsa');
 
 const ProductList  = require("../models/Product");
-const productController = require('../controllers/productsController');
+
+const productController = require('../controllers/productsController')
+
 
 productRouter.route('/')
   // Get all products
@@ -61,13 +63,14 @@ productRouter.route('/:id')
         next(err);
       } else if (product) {
         res.sendStatus(200);
-        res.json({success: true, msg: 'Success! Deleted product: '+ req.params.name});
+        res.json({success: true, msg: 'Success! Deleted product: '+ req.params.id});
       } else {
         res.status(404);
-        res.send(`Sorry, product ${req.params.name} does not exist.`);
+        res.send(`Sorry, product ${req.params.id} does not exist.`);
       }
     });
   });
+
 
 
   const jwtCheck = jwt({
@@ -81,18 +84,28 @@ productRouter.route('/:id')
   issuer: 'https://dev-chq8gp3f.us.auth0.com/',
   algorithms: ['RS256']
   });
-
-productRouter.use(jwtCheck); 
   
-productRouter.route('/')
+  productRouter.use(jwtCheck);
+  
+  //app.get('/authorized', function (req, res) {
+    //  res.send('Secured Resource');
+  //});
+  
+  productRouter.route('/')
+  //DUPLICATED BELOW
   .post((req, res, next) => {
-    const { permissions } = req.user;
-    if(permissions.includes('manage:products')) {
-      next();
-    } else {
-      res.sendStatus(403);
-    }
-  }, productController.createProduct);
+    ProductList.create(req.body, (err, newProduct) => {
+      if (err) { 
+        next(err); 
+      } else if (newProduct) {
+          res.status(200);
+          res.send(newProduct);
+      } else {
+          res.status(404);
+          res.send(`Sorry, product ${req.params.id} already exists.`);
+        }
+      });
+    });
 
 
 module.exports = productRouter;

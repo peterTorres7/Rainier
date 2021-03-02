@@ -2,18 +2,16 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { withAuthenticationRequired, useAuth0 } from '@auth0/auth0-react';
 import axios from "axios";
-// import AuthButton from './AuthButton';
 
 import {
     TextField,
     makeStyles,
-    FormContorl,
-    Input,
-    InputLabel,
+    Container,
+    Select,
  } from "@material-ui/core";
 
  const defaultFormValues = {
-     name: "",
+     name: '',
      qty: '',
      price: '',
      user: '',
@@ -30,7 +28,6 @@ import {
          margin: theme.spacing(5),
      },
      formControl: {
-         //margin: theme.spacing(5),
          padding: 20,             
     },
     title: {
@@ -38,7 +35,7 @@ import {
     },
  }));
 
- function CreateProduct() {
+ export default function CreateProduct() {
      const classes = useStyles();
      const [productFormValues, setProductFormValues] = useState(defaultFormValues);
      const [success, setSuccess] = useState(false);
@@ -46,23 +43,27 @@ import {
 
      const handleInputChange = (event) => {
          const { name, value } = event.target;
+         console.log('name ', name, ' value ', value);
          setProductFormValues({
-             ...setProductFormValues,
+             ...productFormValues,
             [name] : value,
          });
      };
 
      const handleSubmit = async (event) => {
+         console.log('event', event);
+         console.log("hello?");
          event.preventDefault();
          const authToken = await getAccessTokenSilently();
 
          const requestConfig = {
-             url: "http://localhost:4000/api/v1/products/",
-             method: "post",
+             url: 'http://localhost:4000/api/v1/products/',
+             method: 'post',
              headers: { 
                 'Content-Type' : 'application/json',
-                Authorization: `Bearer ${authToken}`,
+                 Authorization: `Bearer ${authToken}`,
              },
+             //unpacking
              data: {
                  name: productFormValues.name,
                  qty: productFormValues.qty,
@@ -78,7 +79,7 @@ import {
                 console.log(`Product created ${response.data}`);
             })
             .catch((err) => {
-                console.log("error");
+                console.log("error ", err);
             });
      };
 
@@ -87,23 +88,72 @@ import {
     }
     else {
         return (
-            <form
-                onSubmit={handleSubmit}
-                class={classes.root}
-                id="productCreateForm">
-                Enter Details of Product for sale:
-                {/* <AuthButton>Authentication Button</AuthButton> */}
-                <TextField id = "name" class = {classes.root} placeholder="Product Name" value={productFormValues.name} onChange={handleInputChange} />
-                <TextField id = "qty" class = {classes.root} placeholder="Product Quantity" value={productFormValues.qty} />
-                <TextField id = "price" class = {classes.root} placeholder="Product Price" value={productFormValues.price} />
-                <TextField id = "user" class = {classes.root} placeholder="Product User" value={productFormValues.user} />
-                <TextField id = "date" class = {classes.root} placeholder="Product Date" value={productFormValues.date} />
-                <button class = {classes.formControl}  onClick={handleInputChange} >Submit new product for sale</button>
-            </form>
+            <Container>
+                <form
+                    onSubmit={handleSubmit}
+                    className={classes.root}
+                    id="productCreateForm"
+                    >
+                    Enter Details of Product for sale:
+                    <TextField 
+                        id = "name" 
+                        className = {classes.root} 
+                        placeholder="Product Name" 
+                        defaultValue={productFormValues.name} 
+                        onChange={handleInputChange} 
+                        name="productName"
+                    />
+
+                    <TextField 
+                        id = "qty" 
+                        className= {classes.root} 
+                        placeholder="Product Quantity" 
+                        defaultValue={productFormValues.qty} 
+                        onChange={handleInputChange} 
+                        name="productQty"
+                    />
+
+                    <TextField 
+                        id = "price" 
+                        className= {classes.root} 
+                        placeholder="Product Price" 
+                        defaultValue={productFormValues.price} 
+                        onChange={handleInputChange} 
+                        name="productPrice"
+                    />
+
+                    <TextField 
+                        id = "user" 
+                        className= {classes.root} 
+                        placeholder="Product User" 
+                        defaultValue={productFormValues.user} 
+                        onChange={handleInputChange} 
+                        name="productUser"
+                    />
+
+                    <TextField 
+                        id = "date" 
+                        className= {classes.root} 
+                        placeholder="Product Date" 
+                        defaultValue={productFormValues.date}
+                        onChange={handleInputChange} 
+                        name="productDate" 
+                    />
+
+                    <button 
+                        className= {classes.formControl}  
+                        type="submit"
+                        form="productCreateForm"
+                    >
+                      Submit new product for sale
+                    </button>
+                </form>
+            </Container>
         )
     }
 };
     
-export default withAuthenticationRequired(CreateProduct, {
+//export default 
+withAuthenticationRequired(CreateProduct, {
     returnTo: () => '/item/CreateProduct',
 });

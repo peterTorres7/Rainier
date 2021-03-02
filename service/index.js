@@ -1,12 +1,14 @@
 const express = require("express");
+const cors = require('cors');
+const helmet = require('helmet');
+const morgan = require('morgan');
+
 const app = express();
 const port = 4000;
 
 const mongoose = require('mongoose');
 require('dotenv').config({ path: '../.env' });
 
-//const morgan = require('morgan');
-const cors = require('cors');
 
 const user = process.env.MONGO_USER;
 const password = process.env.MONGO_PASS;
@@ -28,15 +30,19 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.on('close', () => { console.log("MongoDB connection closed") });
 
 // Middleware
-//app.use(morgan('tiny'));
+
+app.use(morgan('tiny'));
+
 app.use(cors());
 app.use(express.json())
+app.use(helmet());
 
 
 //routes files
 const productRouter = require('./routes/productRoutes');
 const userRouter = require('./routes/userRoutes');
 const transRouter = require('./routes/transactionRoutes');
+
 
 //mount routers
 app.use('/api/v1/products', productRouter);

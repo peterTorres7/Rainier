@@ -64,7 +64,7 @@ userRouter.route('/:id')
   });
 
 // Get a single user by name
-userRouter.get('/:fname', (req, res) => {
+userRouter.get('/:name', (req, res) => {
   UsersList.findOne(req.params.fName, (err, user) => {
     if (err) {
       next(err);

@@ -17,22 +17,22 @@ function App() {
       <Header />
       <HeaderNav />
       <Switch>
-        <Route path="/Login.js">
+        <Route path="/Login">
           <Login />
         </Route>
-        <Route exact path="/SignUp.js">
+        <Route exact path="/SignUp">
           <SignUp />
         </Route>
-        <Route exact path="/Details.js">
+        <Route exact path="/Details">
           <Details/>
         </Route>
-        <Route exact path="/CreateProduct.js">
+        <Route exact path="/CreateProduct">
           <CreateProduct />
         </Route>
-        <Route exact path="/ProfilePage.js">
+        <Route exact path="/ProfilePage">
           <ProfilePage />
         </Route>
-        <Route exact path="/Transactions.js">
+        <Route exact path="/Transactions">
           <Transaction />
         </Route>
         <Route exact path="/">

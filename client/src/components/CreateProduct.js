@@ -51,10 +51,10 @@ import {
      };
 
      const handleSubmit = async (event) => {
-         console.log('event', event);
-         console.log("hello?");
-         event.preventDefault();
-         const authToken = await getAccessTokenSilently();
+        console.log('event', event);
+        event.preventDefault();
+        const authToken = await getAccessTokenSilently();
+        console.log(authToken);
 
          const requestConfig = {
              url: 'http://localhost:4000/api/v1/products/',

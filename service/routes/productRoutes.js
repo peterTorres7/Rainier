@@ -6,6 +6,7 @@ const jwks = require('jwks-rsa');
 const ProductList  = require("../models/Product");
 const productController = require('../controllers/productsController');
 
+
 const productController = require('../controllers/productsController')
 
 
@@ -14,14 +15,14 @@ productRouter.route('/')
   .get((req, res, next) => {
     ProductList.find({}, (err, products) => {
       if (err) { 
-        next(err) 
-      }else{
-      res.send(products);
+        next(err);
+      } else {
+        res.send(products);
       }
     });
-});
-productRouter.route('/:id')
+  });
 
+productRouter.route('/:id')
 
   // Get a single product by id
   .get((req, res, next) => {
@@ -37,20 +38,6 @@ productRouter.route('/:id')
         });
       })
             
-  .post((req, res, next) => {
-    ProductList.create(req.body, (err, newProduct) => {
-      if (err) { 
-        next(err); 
-      } else if (newProduct) {
-          res.status(200);
-          res.send(newProduct);
-      } else {
-          res.status(404);
-          res.send(`Sorry, product ${req.params.id} already exists.`);
-        }
-      });
-    })
-
   //updates product
   .put((req, res, next) => {
     ProductList.findByIdAndUpdate(req.params.id, req.body, (err, product) => {

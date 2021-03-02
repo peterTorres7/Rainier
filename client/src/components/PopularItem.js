@@ -65,10 +65,10 @@ export default function PopularItem({ event }) {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Button className={classes.details} component={Link} to={'/Details.js'}  size="small" color="primary">
+                <Button className={classes.details} component={Link} to={'/Details'}  size="small" color="primary">
                     Item Details
                 </Button>
-                <Button className={classes.seller} component={Link} to={"/ProfilePage.js"} size="small" color="primary">
+                <Button className={classes.seller} component={Link} to={"/ProfilePage"} size="small" color="primary">
                     Contact Seller
                     </Button>     
             </CardActions>

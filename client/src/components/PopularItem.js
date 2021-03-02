@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: "20px",
         marginBottom: '20px',
         backgroundColor: "#28B1D6",
+        minWidth: '400px',
     },
     seller: {
         display: 'inline',
@@ -56,10 +57,10 @@ export default function PopularItem({ event }) {
                 />
                 <CardContent>
                     <Typography variant="h4" component="h2">
-                        {/* {event.name} */}
+                        {event.name}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        {/* {event.price} */}
+                        {event.price}
                     </Typography>
                 </CardContent>
             </CardActionArea>

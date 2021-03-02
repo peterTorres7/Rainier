@@ -11,7 +11,12 @@ productRouter.route('/')
   .get((req, res, next) => {
     ProductList.find({}, (err, products) => {
       if (err) { 
-        next(err) 
+        next(err);
+      } else {
+        res.send(products);
+      }
+    });
+  });
 
 productRouter.route('/:id')
 
@@ -29,20 +34,6 @@ productRouter.route('/:id')
         });
       })
             
-  .post((req, res, next) => {
-    ProductList.create(req.body, (err, newProduct) => {
-      if (err) { 
-        next(err); 
-      } else if (newProduct) {
-          res.status(200);
-          res.send(newProduct);
-      } else {
-          res.status(404);
-          res.send(`Sorry, product ${req.params.id} already exists.`);
-        }
-      });
-    })
-
   //updates product
   .put((req, res, next) => {
     ProductList.findByIdAndUpdate(req.params.id, req.body, (err, product) => {
@@ -95,9 +86,9 @@ productRouter.use(jwtCheck);
   
 productRouter.route('/')
   .post((req, res, next) => {
-    const {permissions} = req.user;
+    const { permissions } = req.user;
     if(permissions.includes('manage:products')) {
-      next()
+      next();
     } else {
       res.sendStatus(403);
     }

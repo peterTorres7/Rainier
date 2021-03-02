@@ -1,8 +1,8 @@
-const dateFns = require("date-fns");
+const dateFns = require('date-fns');
 
 const Product = require("../models/Product");
 
-exports.createProduct = (req, res, next) => {
+exports.createProduct = async (req, res, next) => {
   const date = req.body.date;
   const time = req.body.time;
   const timeZone = req.body.timeZone;
@@ -27,8 +27,8 @@ exports.createProduct = (req, res, next) => {
   };
 
   Product.create(product)
-    .then((product) => {
-      res.send({ productId: product._id });
+    .then((newProd) => {
+      res.send({ productId: newProd._id });
     })
     .catch((err) => {
       console.log(err);

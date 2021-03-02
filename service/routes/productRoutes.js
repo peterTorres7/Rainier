@@ -3,7 +3,9 @@ const productRouter = express.Router();
 const jwt = require('express-jwt');
 const jwks = require('jwks-rsa');
 
-const ProductList = require("../models/Product");
+const ProductList  = require("../models/Product");
+const productController = require('../controllers/productsController');
+
 
 const productController = require('../controllers/productsController')
 
@@ -71,7 +73,32 @@ productRouter.route('/:id')
     });
   });
 
+  const jwtCheck = jwt({
+    secret: jwks.expressJwtSecret({
+        cache: true,
+        rateLimit: true,
+        jwksRequestsPerMinute: 5,
+        jwksUri: 'https://dev-chq8gp3f.us.auth0.com/.well-known/jwks.json'
+  }),
+  audience: 'http://rainier-api',
+  issuer: 'https://dev-chq8gp3f.us.auth0.com/',
+  algorithms: ['RS256']
+  });
 
+productRouter.use(jwtCheck); 
+  
+productRouter.route('/')
+  .post((req, res, next) => {
+    const {permissions} = req.user;
+    if(permissions.includes('manage:products')) {
+      next()
+    } else {
+      res.sendStatus(403);
+    }
+  }, productController.createProduct);
+
+
+module.exports = productRouter;
 
   const jwtCheck = jwt({
     secret: jwks.expressJwtSecret({

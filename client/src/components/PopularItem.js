@@ -1,10 +1,9 @@
 import React from 'react';
-import './PopularItem.css';
 import {
     Card,
     CardActionArea,
     CardActions,
-    CardContent,
+CardContent,
     CardMedia,
     Button,
     Typography,
@@ -12,28 +11,42 @@ import {
 } from "@material-ui/core";
 import {Link} from 'react-router-dom';
 
-const useStyles = makeStyles({
-    details: {
-        marginLeft: "40px",
-        backgroundColor: "#7AD628",
-    },
+const useStyles = makeStyles((theme) => ({
+
     media: {
-        height: 150,
+        display: 'flex',
+        width: '100vw',
     },
     root: {
-        maxWidth: 350,
-        marginLeft: "25px",
+        display: 'inline',
+        padding: theme.spacing(1),
+        maxWidth: '100%',
+        marginLeft: "20px",
+        marginBottom: '20px',
         backgroundColor: "#28B1D6",
+        minWidth: '400px',
     },
     seller: {
-        backgroundColor: "#7AD628"
+        display: 'inline',
+        textAlign: 'center',
+        width: '50vw',
+        backgroundColor: '#c2debd',
+        color: '#3d804f',
     },
-});
+    details: {
+        display: 'inline',
+        textAlign: 'center',
+        width: '50vw',
+        backgroundColor: '#c2debd',
+        color: '#3d804f',
+    },
+}));
 
-export default function PopularItem() {
+export default function PopularItem({ event }) {
     const classes = useStyles();
     return (
         <Card className={classes.root}>
+            <>
             <CardActionArea>
                 <CardMedia 
                     className={classes.media}
@@ -44,10 +57,10 @@ export default function PopularItem() {
                 />
                 <CardContent>
                     <Typography variant="h4" component="h2">
-                        Popular Item
+                        {event.name}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        Suspendisse malesuada mauris libero, vitae tempor eros tempor sed.
+                        {event.price}
                     </Typography>
                 </CardContent>
             </CardActionArea>
@@ -59,6 +72,7 @@ export default function PopularItem() {
                     Contact Seller
                     </Button>     
             </CardActions>
+            </>
         </Card>
     )
 }

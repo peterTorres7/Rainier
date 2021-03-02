@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function LoginSignUp() {
+export default function LoginSignup() {
     const { loginWithRedirect } = useAuth0();
     const classes = useStyles();
     return (
@@ -31,7 +31,7 @@ export default function LoginSignUp() {
                   loginWithRedirect({screen_hint: 'SignUp'})
               }}
             >
-              SignUp  
+              Sign Up  
             </Button>  
         </>    
     );

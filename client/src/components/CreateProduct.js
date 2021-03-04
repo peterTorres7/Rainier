@@ -7,8 +7,7 @@ import {
     TextField,
     makeStyles,
     Container,
-    Select,
- } from "@material-ui/core";
+} from "@material-ui/core";
 
  const defaultFormValues = {
      name: '',
@@ -53,11 +52,11 @@ import {
      const handleSubmit = async (event) => {
         console.log('event', event);
         event.preventDefault();
-        const authToken = await getAccessTokenSilently();
-        console.log(authToken);
+        const authToken = getAccessTokenSilently();
+        console.log('THIS IS THE AUTH TOKEN: ', authToken);
 
          const requestConfig = {
-             url: 'http://localhost:4000/api/v1/products/',
+             url: 'http://localhost:4000/api/v1/products',
              method: 'post',
              headers: { 
                 'Content-Type' : 'application/json',
@@ -74,9 +73,9 @@ import {
          };
 
          axios(requestConfig)
-            .then((response) => {
+            .then(() => {
                 setSuccess(true);
-                console.log(`Product created ${response.data}`);
+                console.log('Product created');
             })
             .catch((err) => {
                 console.log("error ", err);
@@ -155,5 +154,5 @@ import {
     
 //export default 
 withAuthenticationRequired(CreateProduct, {
-    returnTo: () => '/item/CreateProduct',
+    returnTo: () => '/product/CreateProduct',
 });

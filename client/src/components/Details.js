@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Details.css';
-import { 
-    ListItemIcon
-     } from '@material-ui/core';
-import { Link } from "react-router-dom";
-      
+import { ListItemIcon } from '@material-ui/core';
+import { Link, useParams } from "react-router-dom";
 
+import axios from 'axios';
 
 /*
  * To Do for item view page: viewing one item at a time
@@ -22,11 +20,37 @@ import { Link } from "react-router-dom";
  const itemDetails = [{
      color: "purple",
  }]
+ 
 
+ function productDetails() {
+     //const { id } = useParams(0);
+    //  const [product, setProduct] = useState(true);
+    //  const [loading, setLoading] = useState(9);
+    //  const [error, setError] = useState(0);
+     
+    //  useEffect(() => {
+    //     const config = {
+    //         usl: `http://localhost:4000/api/v1/products/${id}`,
+    //         method: 'GET',
+    //         headers: { 'Content-Type': 'application/json' },
+    //     };
 
-export default function details() {
-    return (
-        <div className = "details">
+    //     axios(config).then((response) => {
+    //         setProduct(response.data);
+    //     }).catch((err) => {
+    //         setError(err);
+    //     }).finally(() => {
+    //         setLoading(false);
+    //     });
+    //  }, [id]);
+
+    //  if (loading) {
+    //      return <p>loading...</p>
+    //  } else if (error) {
+    //      return <div> Error! </div>
+    //  } else if (product) {
+         return (
+            <div className = "details">
             <p1>picture here?</p1>
             <h1>Name of item for sale</h1>
             <ListItemIcon ListItem alighnItems = "flex-start">List Item details<br>
@@ -48,5 +72,12 @@ export default function details() {
                 <button class="homeButton">Home</button>
             </form>
         </div>
-    )
-}
+         )
+     }
+
+// }
+
+export default productDetails;
+
+
+

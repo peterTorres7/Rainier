@@ -46,7 +46,9 @@ export default function AutoGrid(props) {
         <h4>First and Last Name</h4>
         <h5>User is a: (admin) {props.role}</h5>
         <p>User locations & other details</p>
-        <button class="messageButton">Message Seller</button>
+        <form action="/Messaging/Message">
+          <button className="messageButton">Message Seller</button>
+        </form>
       </Container>
       <Grid container spacing={3}>
         <Grid item xs>

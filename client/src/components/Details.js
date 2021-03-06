@@ -60,16 +60,18 @@ import axios from 'axios';
             <p1>descriptions</p1>
             <br></br>
             <p>Seller: </p>
-            <Link to="/users">
+            <Link to="/users/:id">
                 Link to Seller User Profile
                 </Link>
+            <form action="/Messaging/Message">
             <button 
-                class = "button"
-                onClick={() => {
-                    alert("will start messages with seller")
-                }}>Message Seller </button>
+                className = "messageButton"
+            >
+                Message Seller 
+            </button>
+            </form>
             <form action="/">
-                <button class="homeButton">Home</button>
+                <button className="homeButton">Home</button>
             </form>
         </div>
          )
@@ -78,6 +80,3 @@ import axios from 'axios';
 // }
 
 export default productDetails;
-
-
-

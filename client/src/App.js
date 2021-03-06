@@ -1,15 +1,13 @@
 import './App.css';
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 import HeaderNav from './components/HeaderNav';
-import PopularItemGroup from './components/PopularItemGroup';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Details from './components/Details';
 import ProfilePage from './components/ProfilePage';
 import CreateProduct from './components/CreateProduct';
-import Transaction from './components/Transactions';
-import { useAuth0 } from '@auth0/auth0-react';
 import PopularItemProvider from './components/PopularItemProvider';
+import Message from './components/Messaging/Message';
 
 function App() {
   return (
@@ -31,11 +29,11 @@ function App() {
         <Route exact path="/ProfilePage">
           <ProfilePage />
         </Route>
-        <Route exact path="/Transactions">
-          <Transaction />
-        </Route>
         <Route exact path="/">
           <PopularItemProvider />
+        </Route>
+        <Route exact path="/Messaging/Message">
+          <Message> hello? messages will go here </Message>
         </Route>
       </Switch>
     </BrowserRouter>

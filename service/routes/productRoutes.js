@@ -77,21 +77,21 @@ productRouter.route('/:id')
         jwksUri: 'https://dev-chq8gp3f.us.auth0.com/.well-known/jwks.json'
   }),
   audience: 'http://rainier-api',
-  issuer: 'dev-chq8gp3f.us.auth0.com',
+  issuer: 'http://dev-chq8gp3f.us.auth0.com',
   algorithms: ['RS256']
 });
 productRouter.use(jwtCheck);
   
-  //app.get('/authorized', function (req, res) {
-    //  res.send('Secured Resource');
-  //});
+  // app.get('/authorized', function (req, res) {
+  //    res.send('Secured Resource');
+  // });
   
   productRouter.route('/')
     .post((req, res, next) => {
       console.log("something");
       const { permissions } = req.user;
 
-      if (permissions.includes('manage:products')) {
+      if (permissions.includes('manage??:products')) {
         next();
       } else {
         res.sendStatus(403);

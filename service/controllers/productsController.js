@@ -23,7 +23,7 @@ exports.createProduct = async (req, res, next) => {
     qty: req.body.qty,
     price: req.body.price,
     user: req.body.user,
-    date: productDate,
+    date: date,
   };
 
   Product.create(product)
@@ -31,7 +31,7 @@ exports.createProduct = async (req, res, next) => {
       res.send({ productId: newProd._id });
     })
     .catch((err) => {
-      console.log(err);
+      console.log('THIS ERROR: ', err);
       next(err);
     });
 };

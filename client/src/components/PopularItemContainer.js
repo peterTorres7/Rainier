@@ -4,7 +4,10 @@ import PopularItemList from './PopularItemList';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        flexGrow: 1,
+        display: 'flex',
+        marging: '10px',
+        justifyContent: 'space-evenly',
+        flexWrap: 'wrap',
     },
     featuredItem: {
         margin: theme.spacing(1),

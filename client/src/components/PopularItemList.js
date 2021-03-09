@@ -8,10 +8,12 @@ const useStyles = makeStyles((theme) => ({
         flexWrap: 'wrap',
         justifyContent: 'space-evenly',
         overflow: 'hidden',
-        backgroundColor: "#28B1D6",
+        backgroundColor: "#d8e3e6",
+        padding: '20px',
+        margin: '20px',
     },
     gridListTile: {
-        minWidth: '400px',
+        minWidth: '300px',
     }
 }));
 

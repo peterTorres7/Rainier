@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { withAuthenticationRequired, useAuth0 } from '@auth0/auth0-react';
 import axios from "axios";
+import FileUploader from './FileUploader';
 
 import {
     TextField,
@@ -138,6 +139,8 @@ import {
                         onChange={handleInputChange} 
                         name="productDate" 
                     />
+
+                    <FileUploader />
 
                     <button 
                         className= {classes.formControl}  

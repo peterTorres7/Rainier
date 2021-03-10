@@ -1,0 +1,36 @@
+import react from 'react';
+import axios from 'axios';
+
+export default function FileUpload() {
+    
+    const [file, setFile] = react.useState("");
+
+    function handleUpload(key, file, uploadProgressHandler) {
+        console.log('handling upload here');
+        const formData = new FormData();
+        formData.append(key,file);
+        const axiosConfig = {
+            url: 'localhost:4000/v1/files',
+            method: 'post',
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        data: formData,
+        onUploadProgress: uploadProgressHandler,        
+        };
+
+    return axios(axiosConfig);
+
+    }
+
+    return (
+        <div id="uploadFile">
+            <ul>Please Upload an Image of the Product for Sale</ul>
+            <input type="file" onChange={handleUpload} />
+            <p>FileName: {file.name}</p>
+        </div>
+    )
+
+}
+
+  

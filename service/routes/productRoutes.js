@@ -18,20 +18,6 @@ productRouter.route('/')
     });
   })
 
-  // .post((req, res, next) => {
-  //   console.log("in post method");
-  //   const { permissions } = req.user;
-
-  //   if (permissions.includes('manage??:products')) {
-  //     next();
-  //   } else {
-  //     res.sendStatus(403);
-  //   }
-  // }, productController.createProduct);
-  
-  
-
-
 productRouter.route('/:id')
 
   // Get a single product by id

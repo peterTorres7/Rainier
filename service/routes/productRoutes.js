@@ -18,19 +18,19 @@ productRouter.route('/')
     });
   })
 
-  .post((req, res, next) => {
-    console.log("in post method");
-    const { permissions } = req.user;
+  // .post((req, res, next) => {
+  //   console.log("in post method");
+  //   const { permissions } = req.user;
 
-    if (permissions.includes('manage??:products')) {
-      next();
-    } else {
-      res.sendStatus(403);
-    }
-  }, productController.createProduct);
+  //   if (permissions.includes('manage??:products')) {
+  //     next();
+  //   } else {
+  //     res.sendStatus(403);
+  //   }
+  // }, productController.createProduct);
   
   
-  ;
+
 
 productRouter.route('/:id')
 
@@ -100,33 +100,17 @@ productRouter.use(jwtCheck);
   //    res.send('Secured Resource');
   // });
   
-  // productRouter.route('/')
-  //   .post((req, res, next) => {
-  //     console.log("something");
-  //     const { permissions } = req.user;
+  productRouter.route('/')
+    .post((req, res, next) => {
+      console.log("something");
+      const { permissions } = req.user;
 
-  //     if (permissions.includes('manage??:products')) {
-  //       next();
-  //     } else {
-  //       res.sendStatus(403);
-  //     }
-  //   }, productController.createProduct);
-
-
-
-      // ProductList.create(req.body, (err, newProduct) => {
-      //   if (err) { 
-      //     next(err); 
-      //   } else if (newProduct) {
-      //       res.status(200);
-      //       res.send(newProduct);
-      //   } else {
-      //       res.status(404);
-      //       res.send(`Sorry, product ${req.params.id} already exists.`);
-      //     }
-      //   });
-      //});
-
+      if (permissions.includes('manage??:products')) {
+        next();
+      } else {
+        res.sendStatus(403);
+      }
+    }, productController.createProduct);
 
 module.exports = productRouter;
 

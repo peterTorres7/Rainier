@@ -13,6 +13,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "google-map-react": "^2.1.9",
     "react": "^17.0.1",
+    "react-chat-elements": "^10.14.0",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",

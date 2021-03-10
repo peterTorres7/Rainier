@@ -42,13 +42,13 @@ app.use(helmet());
 const productRouter = require('./routes/productRoutes');
 const userRouter = require('./routes/userRoutes');
 const transRouter = require('./routes/transactionRoutes');
-const uploadsRouter = require('./routes/fileUploadRoutes');
+//const uploadsRouter = require('./routes/fileUploadRoutes');
 
 //mount routers
 app.use('/api/v1/products', productRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/transactions', transRouter);
-app.use('/api/v1/uploads', uploadsRouter);
+//app.use('/api/v1/uploads', uploadsRouter);
 
 //main route
 app.get("/", (req, res) => {

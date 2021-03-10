@@ -10,7 +10,7 @@ export default function FileUpload() {
         const formData = new FormData();
         formData.append(key,file);
         const axiosConfig = {
-            url: 'localhost:4000/v1/files',
+            url: 'http://localhost:4000/api/v1/files',
             method: 'post',
             headers: {
                 'Content-Type': 'multipart/form-data',

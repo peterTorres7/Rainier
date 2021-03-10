@@ -5,6 +5,8 @@ import { Link, useParams } from "react-router-dom";
 
 import axios from 'axios';
 
+import LocationDetail from './LocationDetail';
+
 /*
  * To Do for item view page: viewing one item at a time
  * 
@@ -69,10 +71,16 @@ import axios from 'axios';
             >
                 Message Seller 
             </button>
+            <div>
+            <LocationDetail>
+                map
+            </LocationDetail>
+            </div>
             </form>
             <form action="/">
                 <button className="homeButton">Home</button>
             </form>
+         
         </div>
          )
      }

@@ -23,8 +23,8 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: '100%',
         marginLeft: "20px",
         marginBottom: '20px',
-        backgroundColor: "#28B1D6",
-        minWidth: '400px',
+        backgroundColor: "#d8e3e6",
+        minWidth: '300px',
     },
     seller: {
         display: 'inline',

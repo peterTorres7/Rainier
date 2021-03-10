@@ -16,7 +16,21 @@ productRouter.route('/')
         res.send(products);
       }
     });
-  });
+  })
+
+  .post((req, res, next) => {
+    console.log("in post method");
+    const { permissions } = req.user;
+
+    if (permissions.includes('manage??:products')) {
+      next();
+    } else {
+      res.sendStatus(403);
+    }
+  }, productController.createProduct);
+  
+  
+  ;
 
 productRouter.route('/:id')
 
@@ -86,17 +100,17 @@ productRouter.use(jwtCheck);
   //    res.send('Secured Resource');
   // });
   
-  productRouter.route('/')
-    .post((req, res, next) => {
-      console.log("something");
-      const { permissions } = req.user;
+  // productRouter.route('/')
+  //   .post((req, res, next) => {
+  //     console.log("something");
+  //     const { permissions } = req.user;
 
-      if (permissions.includes('manage??:products')) {
-        next();
-      } else {
-        res.sendStatus(403);
-      }
-    }, productController.createProduct);
+  //     if (permissions.includes('manage??:products')) {
+  //       next();
+  //     } else {
+  //       res.sendStatus(403);
+  //     }
+  //   }, productController.createProduct);
 
 
 

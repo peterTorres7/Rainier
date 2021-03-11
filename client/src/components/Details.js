@@ -7,44 +7,32 @@ import axios from 'axios';
 
 import LocationDetail from './LocationDetail';
 
-/*
- * To Do for item view page: viewing one item at a time
- * 
- * 1. one large image
- * 2. smaller images
- * 3. item details
- * 4. button to message seller
- * 5. seller
- * 6. location
- * 7. price
- */
 
- const itemDetails = [{
-     color: "purple",
- }]
- 
 
- function productDetails() {
-     //const { id } = useParams(0);
-    //  const [product, setProduct] = useState(true);
-    //  const [loading, setLoading] = useState(9);
-    //  const [error, setError] = useState(0);
+
+//  const { id } = useParams(0);
+//      const [product, setProduct] = useState(true);
+//      const [loading, setLoading] = useState(9);
+//      const [error, setError] = useState(0);
      
-    //  useEffect(() => {
-    //     const config = {
-    //         usl: `http://localhost:4000/api/v1/products/${id}`,
-    //         method: 'GET',
-    //         headers: { 'Content-Type': 'application/json' },
-    //     };
 
-    //     axios(config).then((response) => {
-    //         setProduct(response.data);
-    //     }).catch((err) => {
-    //         setError(err);
-    //     }).finally(() => {
-    //         setLoading(false);
-    //     });
-    //  }, [id]);
+        function productDetails() {
+     
+//      useEffect(() => {
+//         const config = {
+//             usl: `http://localhost:4000/api/v1/products/${id}`,
+//             method: 'GET',
+//             headers: { 'Content-Type': 'application/json' },
+//         };
+
+//         axios(config).then((response) => {
+//             setProduct(response.data);
+//         }).catch((err) => {
+//             setError(err);
+//         }).finally(() => {
+//             setLoading(false);
+//         });
+//      }, [id]);
 
     //  if (loading) {
     //      return <p>loading...</p>

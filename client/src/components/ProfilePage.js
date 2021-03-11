@@ -1,13 +1,3 @@
-// /**
-//  * 
-//  * Making user profile page for sellers, buyers, and admins 
-//  * 
-//  * 1. user picture
-//  * 2. user name
-//  * 3. user location
-//  * 4. ... user details?
-//  * 5. items being sold buy user
-//  * */
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';

@@ -48,7 +48,7 @@ const uploadsRouter = require('./routes/fileUploadRoutes');
 app.use('/api/v1/products', productRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/transactions', transRouter);
-app.use('/api/v1/uploads', uploadsRouter);
+app.use('/api/v1/files', uploadsRouter);
 
 //main route
 app.get("/", (req, res) => {

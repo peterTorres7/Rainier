@@ -23,7 +23,6 @@ function App() {
         </Route>
         <Route exact path="/Details">
           <Details/>
-          <LocationDetail />
         </Route>
         <Route exact path="/CreateProduct">
           <CreateProduct />

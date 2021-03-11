@@ -60,15 +60,13 @@ import LocationDetail from './LocationDetail';
                 Message Seller 
             </button>
             <div>
-            <LocationDetail>
-                map
-            </LocationDetail>
+
             </div>
             </form>
             <form action="/">
                 <button className="homeButton">Home</button>
             </form>
-         
+            <LocationDetail />
         </div>
          )
      }

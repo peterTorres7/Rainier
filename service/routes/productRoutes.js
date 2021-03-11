@@ -69,15 +69,15 @@ productRouter.route('/:id')
     });
   });
 
-  const jwtCheck = jwt({
-    secret: jwks.expressJwtSecret({
-        cache: true,
-        rateLimit: true,
-        jwksRequestsPerMinute: 5,
-        jwksUri: 'https://dev-chq8gp3f.us.auth0.com/.well-known/jwks.json'
+const jwtCheck = jwt({
+  secret: jwks.expressJwtSecret({
+      cache: true,
+      rateLimit: true,
+      jwksRequestsPerMinute: 5,
+      jwksUri: 'https://dev-chq8gp3f.us.auth0.com/.well-known/jwks.json'
   }),
   audience: 'http://rainier-api',
-  issuer: 'http://dev-chq8gp3f.us.auth0.com',
+  issuer: 'https://dev-chq8gp3f.us.auth0.com/',
   algorithms: ['RS256']
 });
 productRouter.use(jwtCheck);
@@ -86,17 +86,16 @@ productRouter.use(jwtCheck);
   //    res.send('Secured Resource');
   // });
   
-  productRouter.route('/')
-    .post((req, res, next) => {
-      console.log("something");
-      const { permissions } = req.user;
-
-      if (permissions.includes('manage??:products')) {
-        next();
-      } else {
-        res.sendStatus(403);
-      }
-    }, productController.createProduct);
+productRouter.route('/')
+  .post((req, res, next) => {
+    const { permissions } = req.user;
+    console.log('permissions: ', permissions);
+    if (permissions.includes('createProducts')) {
+      next();
+    } else {
+      res.sendStatus(403);
+    }
+  }, productController.createProduct);
 
 module.exports = productRouter;
 

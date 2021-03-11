@@ -53,7 +53,7 @@ import {
      const handleSubmit = async (event) => {
         console.log('event', event);
         event.preventDefault();
-        const authToken = getAccessTokenSilently();
+        const authToken = await getAccessTokenSilently();
         console.log('THIS IS THE AUTH TOKEN: ', authToken);
 
          const requestConfig = {

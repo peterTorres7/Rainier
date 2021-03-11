@@ -4,14 +4,14 @@ const upload = multer({ dest: '../data/files'});
 const uploadsRouter = express.Router();
 
 uploadsRouter.route('/')
-    .post(upload.single('image'), (req, res, next) => {
+    .post(upload.single('featuredImage'), (req, res, next) => {
         try {
             const featuredImage = req.file;
             if (!featuredImage) {
                 res.status(400);
-                restart.send({ error: 'no file selected'});
+                res.send({ error: 'no file selected'});
             } else {
-                res.send({ message: 'success' })
+                res.send({ message: 'success' });
             }
         } catch (err) {
             next (err);

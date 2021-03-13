@@ -57,20 +57,20 @@ export default function PopularItem({ event }) {
                 />
                 <CardContent>
                     <Typography variant="h4" component="h2">
-                        {event.name}
+                        {event.time}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        {event.price}
+                        {event.text}
                     </Typography>
                 </CardContent>
             </CardActionArea>
             <CardActions>
                 <Button className={classes.details} component={Link} to={'/Details'}  size="small" color="primary">
-                    Item Details
+                    {`Message is read?`, event.isRead}
                 </Button>
                 <Button className={classes.seller} component={Link} to={"/ProfilePage"} size="small" color="primary">
-                    Contact Seller
-                    </Button>     
+                    {`sender`, event.sender}
+                </Button>     
             </CardActions>
             </>
         </Card>

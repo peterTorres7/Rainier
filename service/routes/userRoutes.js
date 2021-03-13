@@ -1,6 +1,7 @@
 const express = require('express');
 const userRouter = express.Router();
 const UsersList = require("../models/User");
+const ConvoList = require('../models/Conversation');
 
 userRouter.route('/')
   // Get all users
@@ -76,5 +77,17 @@ userRouter.get('/:name', (req, res) => {
     }
   }); 
 });
+
+userRouter.route('/conversation')
+  // Get a single user by id
+  .get((req, res, next) => {
+    ConvoList.find({}, (err, convo) => {
+      if (err) { 
+        console.log("Can't get convos");
+        next(err) 
+      }
+      res.send(ConvolverNode);
+    })
+  });
 
 module.exports = userRouter;

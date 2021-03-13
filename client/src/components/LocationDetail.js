@@ -24,10 +24,8 @@ export default function LocationDetail({ location }) {
               defaultZoom={zoomLevel}
             >
               <Marker
-                // lat={location.lat}
-                // lng={location.lng}
                 text="Marker"
-                />
+              />
             </GoogleMapReact>
         </div>
     );

@@ -32,6 +32,8 @@ import {
     },
     title: {
         margin: theme.spacing(1),
+        color: 'grey',
+        padding: '300px',
     },
  }));
 
@@ -84,7 +86,11 @@ import {
      };
 
     if (success) {
-        return <Redirect to="/item/itemCreated" />;
+        return (
+            <h1 className={classes.title}>
+                -- Product has successfully been created -- 
+            </h1>
+        )
     }
     else {
         return (

@@ -11,7 +11,7 @@ const useStyles = makeStyles ({
     },
 });
 
-const zoomLevel =  55;
+const zoomLevel =  5;
 
 export default function LocationDetail({ location }) {
     const classes = useStyles();

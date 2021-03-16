@@ -104,6 +104,8 @@ import {
                     <TextField 
                         id = "name" 
                         className = {classes.root} 
+                        aria-label="Name Input"
+                        aria-required="true"
                         placeholder="Product Name" 
                         defaultValue={productFormValues.name} 
                         onChange={handleInputChange} 
@@ -113,6 +115,8 @@ import {
                     <TextField 
                         id = "qty" 
                         className= {classes.root} 
+                        aria-label="Quantity Input"
+                        aria-required="true"
                         placeholder="Product Quantity" 
                         defaultValue={productFormValues.qty} 
                         onChange={handleInputChange} 
@@ -122,6 +126,8 @@ import {
                     <TextField 
                         id = "price" 
                         className= {classes.root} 
+                        aria-label="Price Input" 
+                        aria-required="true"
                         placeholder="Product Price" 
                         defaultValue={productFormValues.price} 
                         onChange={handleInputChange} 
@@ -131,6 +137,8 @@ import {
                     <TextField 
                         id = "user" 
                         className= {classes.root} 
+                        aria-label="User Input" 
+                        aria-required="true"
                         placeholder="Product User" 
                         defaultValue={productFormValues.user} 
                         onChange={handleInputChange} 
@@ -140,6 +148,8 @@ import {
                     <TextField 
                         id = "date" 
                         className= {classes.root} 
+                        aria-label="Date Input" 
+                        aria-required="true"
                         placeholder="Product Date" 
                         defaultValue={productFormValues.date}
                         onChange={handleInputChange} 
@@ -149,8 +159,10 @@ import {
                     <FileUploader />
 
                     <button 
-                        className= {classes.formControl}  
+                        className= {classes.formControl}
                         type="submit"
+                        aria-label="Submit Button" 
+                        aria-required="true"  
                         form="productCreateForm"
                     >
                       Submit new product for sale

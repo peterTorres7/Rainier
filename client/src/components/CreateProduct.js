@@ -104,7 +104,7 @@ import {
                     <TextField 
                         id = "name" 
                         className = {classes.root} 
-                        aria-label="name-input"
+                        aria-label="Name Input"
                         aria-required="true"
                         placeholder="Product Name" 
                         defaultValue={productFormValues.name} 
@@ -115,7 +115,7 @@ import {
                     <TextField 
                         id = "qty" 
                         className= {classes.root} 
-                        aria-label="quantity-input"
+                        aria-label="Quantity Input"
                         aria-required="true"
                         placeholder="Product Quantity" 
                         defaultValue={productFormValues.qty} 
@@ -126,7 +126,7 @@ import {
                     <TextField 
                         id = "price" 
                         className= {classes.root} 
-                        aria-label="price-input" 
+                        aria-label="Price Input" 
                         aria-required="true"
                         placeholder="Product Price" 
                         defaultValue={productFormValues.price} 
@@ -137,7 +137,7 @@ import {
                     <TextField 
                         id = "user" 
                         className= {classes.root} 
-                        aria-label="user-input" 
+                        aria-label="User Input" 
                         aria-required="true"
                         placeholder="Product User" 
                         defaultValue={productFormValues.user} 
@@ -148,7 +148,7 @@ import {
                     <TextField 
                         id = "date" 
                         className= {classes.root} 
-                        aria-label="date-input" 
+                        aria-label="Date Input" 
                         aria-required="true"
                         placeholder="Product Date" 
                         defaultValue={productFormValues.date}
@@ -161,7 +161,7 @@ import {
                     <button 
                         className= {classes.formControl}
                         type="submit"
-                        aria-label="submit-button" 
+                        aria-label="Submit Button" 
                         aria-required="true"  
                         form="productCreateForm"
                     >

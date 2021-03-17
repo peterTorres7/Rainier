@@ -7,9 +7,6 @@ import axios from 'axios';
 
 import LocationDetail from './LocationDetail';
 
-
-
-
 //  const { id } = useParams(0);
 //      const [product, setProduct] = useState(true);
 //      const [loading, setLoading] = useState(9);

@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function conversation({ event }) {
+export default function Conversation({ event }) {
     const classes = useStyles();
     return (
         <Card className={classes.root}>

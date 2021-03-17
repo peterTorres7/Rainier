@@ -24,6 +24,7 @@ export default function ConversationContainer({events}) {
                 </Grid>
                 <Conversation events={events} />
             </Grid>
+            <input placeholder='Write new message here: ' />
         </div>
     );
 }

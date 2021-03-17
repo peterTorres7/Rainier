@@ -6,7 +6,7 @@ class convoProvider extends React.Component {
     constructor() {
         super();
         this.state = {
-            events: [],
+            events: ['test', 'test2', 'test3'],
             loading: true,
             error: null,
         };
@@ -46,9 +46,7 @@ class convoProvider extends React.Component {
     renderEvents() {
         const {events} = this.state;
         return (
-            <ConversationContainer events={events}>
-                Hello?
-            </ConversationContainer>
+            <ConversationContainer events={events} />
         )
     }
 

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
 import { withAuthenticationRequired, useAuth0 } from '@auth0/auth0-react';
 import axios from "axios";
 import FileUploader from './FileUploader';
@@ -161,7 +160,6 @@ import {
     }
 };
     
-//export default 
 withAuthenticationRequired(CreateProduct, {
     returnTo: () => '/product/CreateProduct',
 });

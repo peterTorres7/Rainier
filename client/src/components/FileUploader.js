@@ -76,7 +76,6 @@ export default function FileUploader() {
             color="primary"
             component="span"
           >
-            {/* I have no earthly idea why but component=span is crucial */}
             Choose a featured image:
           </Button>
         </label>

@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function PopularItemContainer({events}) {
+export default function ConversationContainer({events}) {
     const classes = useStyles();
     return (
         <div className={classes.root}>

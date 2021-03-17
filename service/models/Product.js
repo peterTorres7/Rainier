@@ -5,7 +5,7 @@ const productSchema = new mongoose.Schema({
   qty: { type: String },
   price: { type: String },
   user: { type: String },
-  date: {type: Date, default: Date.now }
+  date: {type: Date, default: Date.now}
 });
 
 const Product = mongoose.model('Product', productSchema);

@@ -26,23 +26,9 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#d8e3e6",
         minWidth: '300px',
     },
-    seller: {
-        display: 'inline',
-        textAlign: 'center',
-        width: '50vw',
-        backgroundColor: '#c2debd',
-        color: '#3d804f',
-    },
-    details: {
-        display: 'inline',
-        textAlign: 'center',
-        width: '50vw',
-        backgroundColor: '#c2debd',
-        color: '#3d804f',
-    },
 }));
 
-export default function PopularItem({ event }) {
+export default function conversation({ event }) {
     const classes = useStyles();
     return (
         <Card className={classes.root}>
@@ -57,20 +43,20 @@ export default function PopularItem({ event }) {
                 />
                 <CardContent>
                     <Typography variant="h4" component="h2">
-                        {event.name}
+                        {event.time}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        {event.price}
+                        {event.text}
                     </Typography>
                 </CardContent>
             </CardActionArea>
             <CardActions>
                 <Button className={classes.details} component={Link} to={'/Details'}  size="small" color="primary">
-                    Item Details
+                    {`Message is read?`, event.isRead}
                 </Button>
                 <Button className={classes.seller} component={Link} to={"/ProfilePage"} size="small" color="primary">
-                    Contact Seller
-                    </Button>     
+                    {`sender`, event.sender}
+                </Button>     
             </CardActions>
             </>
         </Card>

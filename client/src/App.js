@@ -7,8 +7,7 @@ import Details from './components/Details';
 import ProfilePage from './components/ProfilePage';
 import CreateProduct from './components/CreateProduct';
 import PopularItemProvider from './components/PopularItemProvider';
-import Message from './components/Messaging/Message';
-import LocationDetail from './components/LocationDetail';
+import ConversationProvider from './components/Messaging/ConversationProvider';
 
 function App() {
   return (
@@ -33,8 +32,8 @@ function App() {
         <Route exact path="/">
           <PopularItemProvider />
         </Route>
-        <Route exact path="/Messaging/Message">
-          <Message> hello? messages will go here </Message>
+        <Route exact path="/users/conversation">
+          <ConversationProvider>Conversations should be here :(</ConversationProvider>
         </Route>
       </Switch>
     </BrowserRouter>

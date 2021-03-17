@@ -53,12 +53,10 @@ import LocationDetail from './LocationDetail';
             <Link to="/users/:id">
                 Link to Seller User Profile
                 </Link>
-            <form action="/Messaging/Message">
-            <button 
-                className = "messageButton"
-            >
-                Message Seller 
-            </button>
+            <form action="/users/conversation">
+                <button className = "messageButton">
+                    Message Seller 
+                </button>
             <div>
 
             </div>

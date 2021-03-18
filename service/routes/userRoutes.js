@@ -90,4 +90,28 @@ userRouter.route('/conversation')
     })
   });
 
+const jwtCheck = jwt({
+  secret: jwks.expressJwtSecret({
+      cache: true,
+      rateLimit: true,
+      jwksRequestsPerMinute: 5,
+      jwksUri: 'https://dev-chq8gp3f.us.auth0.com/.well-known/jwks.json'
+  }),
+  audience: 'http://rainier-api',
+  issuer: 'https://dev-chq8gp3f.us.auth0.com/',
+  algorithms: ['RS256']
+});
+userRouter.use(jwtCheck);
+  
+userRouter.route('/conversations')
+  .post((req, res, next) => {
+    const { permissions } = req.user;
+    console.log('Convo permissions: ', permissions);
+    if (permissions.includes('not needed')) {
+      next();
+    } else {
+      res.sendStatus(403);
+    }
+  }, messageController.sendMessage);
+
 module.exports = userRouter;

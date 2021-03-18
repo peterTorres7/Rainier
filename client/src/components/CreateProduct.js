@@ -64,7 +64,6 @@ import {
                 'Content-Type' : 'application/json',
                  Authorization: `Bearer ${authToken}`,
              },
-             //unpacking
              data: {
                  name: productFormValues.name,
                  qty: productFormValues.qty,

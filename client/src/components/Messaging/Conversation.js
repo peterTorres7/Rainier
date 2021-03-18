@@ -33,12 +33,21 @@ export default function Conversation({ event }) {
     return (
         <Card className={classes.root}>
             <>
-            <CardActionArea>
-                <CardContent>
+            <CardActionArea className={classes.root}>
+                <CardContent className={classes.media}>
                     Hello? CardContent in Conversation
                 </CardContent>
+                <CardContent>
+                    Hello? CardContent in Conversation ugh
+                </CardContent>
             </CardActionArea>
+            <CardContent>
+                    Hello? CardContent in Conversation
+                </CardContent>
             </>
+            <CardContent>
+                    Hello? CardContent in Conversation
+                </CardContent>
         </Card>
     )
 }

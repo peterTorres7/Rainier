@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from "react";
 import axios from 'axios';
 import ConversationContainer from './ConversationContainer';
+import { withAuthenticationRequired, useAuth0 } from '@auth0/auth0-react';
 
 class convoProvider extends React.Component {
     constructor() {
@@ -68,3 +69,7 @@ class convoProvider extends React.Component {
 }
 
 export default convoProvider;
+
+withAuthenticationRequired(ConversationContainer, {
+    returnTo: () => '/users/conversation',
+});

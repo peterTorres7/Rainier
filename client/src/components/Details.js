@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React  from 'react';
 import './Details.css';
-import { ListItemIcon } from '@material-ui/core';
+import { ListItemIcon, Button } from '@material-ui/core';
 import { Link, useParams } from "react-router-dom";
 
-import axios from 'axios';
 
 import LocationDetail from './LocationDetail';
 
@@ -50,14 +49,10 @@ import LocationDetail from './LocationDetail';
             <Link to="/users/:id">
                 Link to Seller User Profile
                 </Link>
-            <form action="/users/conversation">
-                <button className = "messageButton">
-                    Message Seller 
-                </button>
-            <div>
+            <Button className="messageButton" component={Link} to={'/users/conversation'}>
+                Message Seller 
+            </Button>
 
-            </div>
-            </form>
             <form action="/">
                 <button className="homeButton">Home</button>
             </form>

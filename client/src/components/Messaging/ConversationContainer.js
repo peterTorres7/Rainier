@@ -18,7 +18,10 @@ const useStyles = makeStyles((theme) => ({
         display: 'center',
         padding: '30px',
         justifyContent: 'space-evenly',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        background: '#d8e3e6',
+        color: 'navy',
+        outlineColor: 'grey'
     }
 }));
 
@@ -46,7 +49,7 @@ export default function ConversationContainer({events}) {
     };
 
     const handleSubmit = async (event) => {
-        console.log("button pressed?");
+       console.log("button pressed?");
        console.log('event', event);
        event.preventDefault();
        const authToken = await getAccessTokenSilently();
@@ -72,14 +75,9 @@ export default function ConversationContainer({events}) {
                console.log('Message Sent');
            })
            .catch((err) => {
-               console.log("Error - ", err);
+               console.log("Error in Conversation Container - ", err);
            });
     };
-
-
-
-
-
 
     return (
         <div className={classes.root}>
@@ -100,8 +98,12 @@ export default function ConversationContainer({events}) {
                     className={classes.button}
                     onClick={handleSubmit}
                     >
-                    Send Message :) omg this should be below, help
+                    Send Message
                 </button>
         </div>
     );
 }
+
+withAuthenticationRequired(ConversationContainer, {
+    returnTo: () => '/users/conversation',
+});

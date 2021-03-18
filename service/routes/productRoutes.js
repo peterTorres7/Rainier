@@ -82,15 +82,11 @@ const jwtCheck = jwt({
 });
 productRouter.use(jwtCheck);
   
-  // app.get('/authorized', function (req, res) {
-  //    res.send('Secured Resource');
-  // });
-  
 productRouter.route('/')
   .post((req, res, next) => {
     const { permissions } = req.user;
     console.log('permissions: ', permissions);
-    if (permissions.includes('createProducts')) {
+    if (permissions.includes('we dont need this? ')) {
       next();
     } else {
       res.sendStatus(403);

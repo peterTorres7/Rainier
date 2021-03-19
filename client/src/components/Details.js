@@ -47,8 +47,8 @@ import LocationDetail from './LocationDetail';
             <br></br>
             <p>Seller: </p>
             <Link to="/users/:id">
-                Link to Seller User Profile
-                </Link>
+                View User Profile
+            </Link>
             <Button className="messageButton" component={Link} to={'/users/conversation'}>
                 Message Seller 
             </Button>

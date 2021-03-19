@@ -26,15 +26,16 @@ function App() {
         <Route exact path="/CreateProduct">
           <CreateProduct />
         </Route>
-        <Route exact path="/ProfilePage">
+        <Route exact path="/users/conversation">
+          <ConversationProvider>Conversations should be here :(</ConversationProvider>
+        </Route>
+        <Route exact path="/users/:id">
           <ProfilePage />
         </Route>
         <Route exact path="/">
           <PopularItemProvider />
         </Route>
-        <Route exact path="/users/conversation">
-          <ConversationProvider>Conversations should be here :(</ConversationProvider>
-        </Route>
+        
       </Switch>
     </BrowserRouter>
   );

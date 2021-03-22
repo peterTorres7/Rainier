@@ -7,7 +7,7 @@ class convoProvider extends React.Component {
     constructor() {
         super();
         this.state = {
-            events: ['test', 'test2', 'test3'],
+            events: [],
             loading: true,
             error: null,
         };
@@ -15,7 +15,7 @@ class convoProvider extends React.Component {
 
     componentDidMount() {
         const requestConfig = {
-            url: 'http://localhost:4000/api/v1/conversations/',
+            url: 'http://localhost:4000/api/v1/users/convo',
             method: 'GET',
             headers: { 'Content-Type' : 'applicaiton/json'},
         };
@@ -53,8 +53,8 @@ class convoProvider extends React.Component {
 
     render() {
         const {loading, events, error} = this.state;
-        console.log(loading);
-        console.log(events);
+        console.log('loading?', loading);
+        console.log('events: ', events);
         console.log(error);
         if (loading) {
             return this.renderLoading();

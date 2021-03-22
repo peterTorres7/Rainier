@@ -1,15 +1,6 @@
 import React from 'react';
-import {
-    Card,
-    CardActionArea,
-    CardActions,
-    CardContent,
-    CardMedia,
-    Button,
-    Typography,
-    makeStyles
-} from "@material-ui/core";
-import {Link} from 'react-router-dom';
+import {GridList, GridListTile, makeStyles} from '@material-ui/core';
+import Message from './Message';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -28,17 +19,17 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Conversation({ event }) {
+export default function Conversation({ events }) {
     const classes = useStyles();
     return (
-        <Card className={classes.root}>
-            <>
-            <CardActionArea className={classes.root}>
-                <CardContent className={classes.media}>
-                    Hello? CardContent in Conversation
-                </CardContent>
-            </CardActionArea>
-            </>
-        </Card>
+        <div className = {classes.root}>
+            <GridList  cols={5}>
+                {events.map((event) => (
+                    <GridListTile className={classes.gridListTile} key={event._id}>
+                        <Message event={event} />
+                    </GridListTile>
+                ))}
+            </GridList>
+        </div>
     )
 }

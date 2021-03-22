@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Grid, Typography, makeStyles} from '@material-ui/core';
+import {Grid, Typography, makeStyles, Container} from '@material-ui/core';
 import { withAuthenticationRequired, useAuth0 } from '@auth0/auth0-react';
 import Conversation from './Conversation';
 import axios from "axios";
@@ -7,9 +7,12 @@ import axios from "axios";
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
-        marging: '10px',
-        justifyContent: 'space-evenly',
+        marging: '5px',
+        justifyContent: 'center',
         flexWrap: 'wrap',
+        alignItems: 'flex-start',
+        borderRadius: 3,
+
     },
     conversation: {
         margin: theme.spacing(1),
@@ -56,7 +59,7 @@ export default function ConversationContainer({events}) {
        console.log('THIS IS THE AUTH TOKEN: ', authToken);
 
         const requestConfig = {
-            url: 'http://localhost:4000/api/v1/users',
+            url: 'http://localhost:4000/api/v1/users/convo',
             method: 'post',
             headers: { 
                'Content-Type' : 'application/json',
@@ -80,13 +83,13 @@ export default function ConversationContainer({events}) {
     };
 
     return (
-        <div className={classes.root}>
-            <Grid container direction='column'>
+        <div className={classes}>
+            <Container container direction='column'>
                 <Grid item className={classes.conversation}>
-                    <Typography variant='h3'>Conversation </Typography>
+                    <Typography variant='h4'>Conversation </Typography>
                 </Grid>
                 <Conversation events={events} />
-            </Grid>
+            </Container>
                 <input 
                     placeholder='Write new message here: ' 
                     defaultValue={productFormValues.text}

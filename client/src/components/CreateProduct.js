@@ -79,7 +79,7 @@ import {
                 console.log('Product created');
             })
             .catch((err) => {
-                console.log("this is AXIOS ERROR - ", err);
+                console.log("AXIOS ERROR - ", err);
             });
      };
 

@@ -1,7 +1,13 @@
 const express = require('express');
 const userRouter = express.Router();
+
+const jwt = require('express-jwt');
+const jwks = require('jwks-rsa');
+
 const UsersList = require("../models/User");
 const ConvoList = require('../models/Conversation');
+const messageController = require('../controllers/messageController');
+
 
 userRouter.route('/')
   // Get all users
@@ -103,11 +109,11 @@ const jwtCheck = jwt({
 });
 userRouter.use(jwtCheck);
   
-userRouter.route('/conversations')
+userRouter.route('/')
   .post((req, res, next) => {
     const { permissions } = req.user;
     console.log('Convo permissions: ', permissions);
-    if (permissions.includes('not needed')) {
+    if (permissions.includes('createProducts')) {
       next();
     } else {
       res.sendStatus(403);

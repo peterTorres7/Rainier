@@ -94,7 +94,7 @@ import {
         return (
             <Container>
                 <form
-                    onSubmit={handleSubmit}
+                    //onSubmit={handleSubmit}
                     className={classes.root}
                     id="productCreateForm"
                     >
@@ -107,7 +107,7 @@ import {
                         placeholder="Product Name" 
                         defaultValue={productFormValues.name} 
                         onChange={handleInputChange} 
-                        name="productName"
+                        name='name'
                     />
 
                     <TextField 
@@ -118,7 +118,7 @@ import {
                         placeholder="Product Quantity" 
                         defaultValue={productFormValues.qty} 
                         onChange={handleInputChange} 
-                        name="productQty"
+                        name='qty'
                     />
 
                     <TextField 
@@ -129,7 +129,7 @@ import {
                         placeholder="Product Price" 
                         defaultValue={productFormValues.price} 
                         onChange={handleInputChange} 
-                        name="productPrice"
+                        name='price'
                     />
 
                     <TextField 
@@ -140,7 +140,7 @@ import {
                         placeholder="Product User" 
                         defaultValue={productFormValues.user} 
                         onChange={handleInputChange} 
-                        name="productUser"
+                        name='user'
                     />
 
                     <TextField 
@@ -151,17 +151,18 @@ import {
                         placeholder="Product Date" 
                         defaultValue={productFormValues.date}
                         onChange={handleInputChange} 
-                        name="productDate" 
+                        name='date' 
                     />
 
                     <FileUploader />
 
                     <button 
                         className= {classes.formControl}
-                        type="submit"
+                        //type="submit"
                         aria-label="Submit Button" 
                         aria-required="true"  
-                        form="productCreateForm"
+                        //form="productCreateForm"
+                        onClick={handleSubmit}
                     >
                       Submit new product for sale
                     </button>

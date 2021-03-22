@@ -7,11 +7,9 @@ import axios from "axios";
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
-        marging: '5px',
-        justifyContent: 'center',
+        marging: '10px',
+        justifyContent: 'space-evenly',
         flexWrap: 'wrap',
-        alignItems: 'flex-start',
-        borderRadius: 3,
 
     },
     conversation: {
@@ -59,7 +57,7 @@ export default function ConversationContainer({events}) {
        console.log('THIS IS THE AUTH TOKEN: ', authToken);
 
         const requestConfig = {
-            url: 'http://localhost:4000/api/v1/users/convo',
+            url: 'http://localhost:4000/api/v1/users',
             method: 'post',
             headers: { 
                'Content-Type' : 'application/json',
@@ -83,7 +81,7 @@ export default function ConversationContainer({events}) {
     };
 
     return (
-        <div className={classes}>
+        <div className={classes.root}>
             <Container container direction='column'>
                 <Grid item className={classes.conversation}>
                     <Typography variant='h4'>Conversation </Typography>

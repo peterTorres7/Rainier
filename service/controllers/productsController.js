@@ -13,10 +13,10 @@ exports.createProduct = async (req, res, next) => {
     new Date()
   );
 
-  if (!dateFns.isFuture(productDate)) {
-    res.sendStatus(400);
-    res.send({ error: "Product posted date must be in the future" });
-  }
+  // if (!dateFns.isFuture(productDate)) {
+  //   res.sendStatus(400);
+  //   res.send({ error: "Product posted date must be in the future" });
+  // }
 
   const product = {
     name:  req.body.name,

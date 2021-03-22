@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import './HeaderNav.css';
 import {
     AppBar,
     Button,
@@ -65,7 +64,6 @@ const useStyles = makeStyles((theme) => ({
 export default function HeaderNav() {
     const classes = useStyles();
     return (
-        
         <AppBar position="static">
             <Toolbar className={classes.toolbar}>
                 <IconButton className={classes.iconButton} component={Link} to={'/'} edge="start" aria-label="menu">
@@ -88,6 +86,5 @@ export default function HeaderNav() {
                 <AuthButtonGroup />
             </Toolbar>
         </AppBar>
-        
     )
 }

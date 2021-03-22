@@ -13,17 +13,17 @@ export default function Logout() {
     const classes = useStyles();
 
     return (
-        <Button
-          className={classes.nav}
-          variant="outlined"
-          color="inherit"
-          onClick={() => {
-              logout({
-                  returnTo:window.location.origin,
-              });
-          }}
-    >
+      <Button
+        className={classes.nav}
+        variant="outlined"
+        color="inherit"
+        onClick={() => {
+          logout({
+            returnTo:window.location.origin,
+            });
+        }}
+      >
         Logout
-    </Button>      
+      </Button>      
     )
 }

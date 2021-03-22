@@ -12,7 +12,18 @@ const messageController = require('../controllers/messageController');
 userRouter.route('/')
   // Get all users
   .get((req, res, next) => {
-    UsersList.find({}, (err, list) => {
+    ConvoList.find({}, (err, list) => {
+      if (err) { 
+        next(err) 
+      }
+      res.send(list);
+    })
+  });
+
+  userRouter.route('/convo')
+  // Get all users
+  .get((req, res, next) => {
+    ConvoList.find({}, (err, list) => {
       if (err) { 
         next(err) 
       }

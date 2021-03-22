@@ -8,7 +8,6 @@ import ProfilePage from './components/ProfilePage';
 import CreateProduct from './components/CreateProduct';
 import PopularItemProvider from './components/PopularItemProvider';
 import Message from './components/Messaging/Message';
-import LocationDetail from './components/LocationDetail';
 
 function App() {
   return (

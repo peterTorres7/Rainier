@@ -12,7 +12,7 @@ export default function LoginSignup() {
     const { loginWithRedirect } = useAuth0();
     const classes = useStyles();
     return (
-        <>
+        <div>
           <Button
             className={classes.nav}
             variant="outlined"
@@ -33,6 +33,6 @@ export default function LoginSignup() {
             >
               Sign Up  
             </Button>  
-        </>    
+        </div>    
     );
 }

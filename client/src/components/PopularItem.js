@@ -46,7 +46,6 @@ export default function PopularItem({ event }) {
     const classes = useStyles();
     return (
         <Card className={classes.root}>
-            <>
             <CardActionArea>
                 <CardMedia 
                     className={classes.media}
@@ -71,8 +70,7 @@ export default function PopularItem({ event }) {
                 <Button className={classes.seller} component={Link} to={"/ProfilePage"} size="small" color="primary">
                     Contact Seller
                     </Button>     
-            </CardActions>
-            </>
+            </CardActions>           
         </Card>
     )
 }

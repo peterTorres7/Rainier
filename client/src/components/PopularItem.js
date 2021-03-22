@@ -60,7 +60,7 @@ export default function PopularItem({ event }) {
                         {event.name}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        {event.price}
+                        ${event.price}
                     </Typography>
                 </CardContent>
             </CardActionArea>

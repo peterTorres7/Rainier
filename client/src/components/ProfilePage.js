@@ -31,7 +31,7 @@ export default function AutoGrid(props) {
         <Button 
           className={classes.button}
           component={Link}
-          to={'/Messaging/Message'}
+          to={'/users/conversation'}
           >Message Seller
         </Button>
       </Container>

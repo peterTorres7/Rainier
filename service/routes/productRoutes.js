@@ -86,7 +86,7 @@ productRouter.route('/')
   .post((req, res, next) => {
     const { permissions } = req.user;
     console.log('permissions: ', permissions);
-    if (permissions.includes('we dont need this? ')) {
+    if (permissions.includes('createProducts')) {
       next();
     } else {
       res.sendStatus(403);

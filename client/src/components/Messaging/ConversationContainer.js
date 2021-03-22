@@ -49,14 +49,14 @@ export default function ConversationContainer({events}) {
     };
 
     const handleSubmit = async (event) => {
-       console.log("button pressed?");
+       console.log("button pressed");
        console.log('event', event);
        event.preventDefault();
        const authToken = await getAccessTokenSilently();
        console.log('THIS IS THE AUTH TOKEN: ', authToken);
 
         const requestConfig = {
-            url: 'http://localhost:4000/api/v1/conversations',
+            url: 'http://localhost:4000/api/v1/users',
             method: 'post',
             headers: { 
                'Content-Type' : 'application/json',
@@ -91,8 +91,8 @@ export default function ConversationContainer({events}) {
                     placeholder='Write new message here: ' 
                     defaultValue={productFormValues.text}
                     onChange={handleInputChange}
-                    name={productFormValues.sender}
-                    />
+                    name='text'
+                />
 
                 <button 
                     className={classes.button}

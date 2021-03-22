@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React  from 'react';
 import './Details.css';
-import { ListItemIcon } from '@material-ui/core';
+import { ListItemIcon, Button } from '@material-ui/core';
 import { Link, useParams } from "react-router-dom";
 
-import axios from 'axios';
 
 import LocationDetail from './LocationDetail';
-
-
-
 
 //  const { id } = useParams(0);
 //      const [product, setProduct] = useState(true);
@@ -51,18 +47,12 @@ import LocationDetail from './LocationDetail';
             <br></br>
             <p>Seller: </p>
             <Link to="/users/:id">
-                Link to Seller User Profile
-                </Link>
-            <form action="/Messaging/Message">
-            <button 
-                className = "messageButton"
-            >
+                View User Profile
+            </Link>
+            <Button className="messageButton" component={Link} to={'/users/conversation'}>
                 Message Seller 
-            </button>
-            <div>
+            </Button>
 
-            </div>
-            </form>
             <form action="/">
                 <button className="homeButton">Home</button>
             </form>

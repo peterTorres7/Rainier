@@ -1,113 +1,90 @@
-import { Button } from '@material-ui/core';
-import { 
-    MessageBox,
-    ChatItem,
-    SystemMessage,
-    MessageList,
-    Input
- } from 'react-chat-elements';
+// import { Button } from '@material-ui/core';
 
-export default function messaging() {
+// export default function messaging() {
     
-    const message = [{
-        text: "fake messages????"
-    }]   
+//     const message = [{
+//         text: "fake messages????"
+//     }]   
 
-    return (
+//     return (
 
-        <div>
-            <ChatItem 
-                subtitle={`message`}
-                title={`ughalsk;djfkl;sadjf`}
-                date={new Date()}
-            />
-            <Input
-                placeholder="type message here"
-            />
-            <Button>           
-                Send Message
-            </Button>
-        </div>
+//         <div>
+//             <ChatItem 
+//                 subtitle={`message`}
+//                 title={`ughalsk;djfkl;sadjf`}
+//                 date={new Date()}
+//             />
+//             <Input
+//                 placeholder="type message here"
+//             />
+//             <Button>           
+//                 Send Message
+//             </Button>
+//         </div>
 
-    )
-}
-
-
-
-
-
-
-// import React from 'react';
-// import MessageTitle from './Title';
-// import MessageList from './MessageList';
-// import SendMessageForm from './SendMessageForm';
-// import SingleMessage from './SingleMessage';
-
-
-
-
-// class messaging extends React.Component {
-
-//     constructor() {
-//         super()
-//         this.state = {
-//             messages: mockMessage
-//         }
-//     }
-
-
-
-//     render () {
-//         return (
-//             <div className="messages">
-//                 <MessageTitle />
-//                 <MessageList messages={this.state.messages} />
-//                 <SendMessageForm />
-//             </div>
-//         )
-//     }
+//     )
 // }
 
+import React from 'react';
+import {
+    Card,
+    CardActionArea,
+    CardActions,
+    CardContent,
+    CardMedia,
+    Button,
+    Typography,
+    makeStyles
+} from "@material-ui/core";
+import {Link} from 'react-router-dom';
 
-//     export default messaging;
+const useStyles = makeStyles((theme) => ({
 
+    media: {
+        display: 'flex',
+        width: '100vw',
+    },
+    root: {
+        display: 'inline',
+        padding: theme.spacing(1),
+        maxWidth: '100%',
+        marginLeft: "20px",
+        marginBottom: '20px',
+        backgroundColor: "#d8e3e6",
+        minWidth: '300px',
+    },
+    seller: {
+        display: 'inline',
+        textAlign: 'center',
+        width: '50vw',
+        backgroundColor: '#c2debd',
+        color: '#3d804f',
+    },
+    details: {
+        display: 'inline',
+        textAlign: 'center',
+        width: '50vw',
+        backgroundColor: '#c2debd',
+        color: '#3d804f',
+    },
+}));
 
-
-// const mockMessage = [
-//     {
-//         senderId: "Annelise?",
-//         text: "hello?"
-//     },
-//     {
-//         senderId: "Mona",
-//         text: "Hi"
-//     }
-// ]
-
-
-// // export default function messageThread() {
-
-// //     return (
-// //         console.log("Hello?"),
-// //         <div className="message">
-// //             {MessageChannel.senderId}
-// //             Hello?
-// //         </div>
-// //     )
-// // }
-
-
-//     export default function messageThread () {
-//         // constructor() 
-//         //     super()
-//         //     this.state = {
-//         //         messages: mockMessage
-//         //     }
-
-//             return (
-//                 <div className="message">
-//                     <header>hello?</header>
-//                     <MessageTitle />
-//                 </div>
-//             )
-//         }
+export default function PopularItem({ event }) {
+    const classes = useStyles();
+    return (
+        <Card className={classes.root}>
+            <>
+            <CardActionArea>
+                <CardContent>
+                    <Typography variant="h4" component="h2">
+                        {event.sender}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        {event.text}
+                    </Typography>
+                </CardContent>
+            </CardActionArea>
+            </>
+        </Card>
+    )
+}

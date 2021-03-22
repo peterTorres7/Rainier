@@ -82,10 +82,6 @@ const jwtCheck = jwt({
 });
 productRouter.use(jwtCheck);
   
-  // app.get('/authorized', function (req, res) {
-  //    res.send('Secured Resource');
-  // });
-  
 productRouter.route('/')
   .post((req, res, next) => {
     const { permissions } = req.user;

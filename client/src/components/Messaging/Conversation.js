@@ -9,13 +9,7 @@ const useStyles = makeStyles((theme) => ({
         width: '100vw',
     },
     root: {
-        // display: 'inline',
-        // padding: theme.spacing(1),
-        // maxWidth: '100%',
-        // marginLeft: "20px",
-        // marginBottom: '20px',
-        // backgroundColor: "#d8e3e6",
-        // minWidth: '300px',
+        display: 'inline',
     },
 }));
 

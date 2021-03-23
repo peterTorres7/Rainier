@@ -22,8 +22,8 @@ productRouter.route('/:id')
 
   // Get a single product by id
   .get((req, res, next) => {
-    ProductList.findById(req.params.id, (err, product) => {
-          if (err) {
+    ProductList.findById(req.params.id, (err, product) => {   
+      if (err) {
             next(err);
           } else if (product) {
             res.send(product);

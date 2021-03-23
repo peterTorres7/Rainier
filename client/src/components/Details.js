@@ -22,8 +22,9 @@ function ProductDetails() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        console.log("product id is", id)
       const config = {
-        url: `http://localhost:4000/api/v1/products/`,
+        url: `http://localhost:4000/api/v1/products/${id}`,
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
       };
@@ -38,18 +39,20 @@ function ProductDetails() {
 
     if (error) {
         return <div> { `${error}` } </div>;
-    } else {
+    } else if (event) {
         return (
             <Card className={classes.root}>
                 <CardContent>
                     <Typography variant="h4" component="h2">
-                       Hello  {event.name}
+                       {event.name}
                     </Typography>
                 </CardContent>
               
             </Card>
             
         )
+    } else {
+        return <div>Nothing to return</div>
     }
 
 }

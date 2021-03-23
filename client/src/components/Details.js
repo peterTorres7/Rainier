@@ -60,7 +60,6 @@ function ProductDetails(event) {
         </div>
          )
      }
-
  }
 
 export default ProductDetails;

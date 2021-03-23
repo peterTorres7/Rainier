@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from 'axios';
 import ConversationContainer from './ConversationContainer';
-import { withAuthenticationRequired, useAuth0 } from '@auth0/auth0-react';
+import { withAuthenticationRequired } from '@auth0/auth0-react';
 
 class convoProvider extends React.Component {
     constructor() {
@@ -41,7 +41,7 @@ class convoProvider extends React.Component {
     }
 
     renderError() {
-        return <div>Error in ConversationProvider !! :( </div>
+        return <div>Error in ConversationProvider !!</div>
     }
 
     renderEvents() {

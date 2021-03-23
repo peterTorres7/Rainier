@@ -9,13 +9,13 @@ const useStyles = makeStyles((theme) => ({
         width: '100vw',
     },
     root: {
-        display: 'inline',
-        padding: theme.spacing(1),
-        maxWidth: '100%',
-        marginLeft: "20px",
-        marginBottom: '20px',
-        backgroundColor: "#d8e3e6",
-        minWidth: '300px',
+        // display: 'inline',
+        // padding: theme.spacing(1),
+        // maxWidth: '100%',
+        // marginLeft: "20px",
+        // marginBottom: '20px',
+        // backgroundColor: "#d8e3e6",
+        // minWidth: '300px',
     },
 }));
 
@@ -23,13 +23,13 @@ export default function Conversation({ events }) {
     const classes = useStyles();
     return (
         <div className = {classes.root}>
-            <GridList  cols={5}>
+            <ul>
                 {events.map((event) => (
-                    <GridListTile className={classes.gridListTile} key={event._id}>
+                    <p3 className={classes.gridListTile} key={event._id}>
                         <Message event={event} />
-                    </GridListTile>
+                    </p3>
                 ))}
-            </GridList>
+            </ul>
         </div>
     )
 }

@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Details.css';
-import { Card, CardContent, makeStyles, Typography } from '@material-ui/core';
-import { ListItemIcon } from '@material-ui/core';
+import { Button, Card, CardActionArea, CardActions, CardMedia, CardContent, makeStyles, Typography } from '@material-ui/core';
 import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
 
@@ -9,9 +7,21 @@ import LocationDetail from './LocationDetail';
 
 const useStyles = makeStyles ({
     root: {
+        backgroundColor: '#20b2aa',
         display: 'flex',
         justifyContent: 'space-around',
-        width: '50vm'
+        width: '50vm',
+    },
+    media: {
+        display: 'flex',
+        width: '100vw',
+    },
+    button: {
+        display: 'inline',
+        textAlign: 'center',
+        width: '50vw',
+        backgroundColor: '#c2debd',
+        color: '#3d804f',
     },
 });
 
@@ -41,15 +51,37 @@ function ProductDetails() {
         return <div> { `${error}` } </div>;
     } else if (event) {
         return (
+            <div className={classes.main}>
             <Card className={classes.root}>
+              <CardActionArea>
+                <CardMedia 
+                    className={classes.media}
+                    component="img"
+                    alt="Image place holder"
+                    image=""
+                    title="Popular Item"
+                />
                 <CardContent>
                     <Typography variant="h4" component="h2">
-                       {event.name}
+                        This {event.name} is a popular item right now!
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        For only ${event.price}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        Item Description: Donec blandit ultrices nisi quis posuere. Curabitur vel risus massa. Nunc lacinia lacinia mi, at dapibus tortor semper nec. Praesent dictum neque pharetra pharetra varius. Proin at velit at risus pulvinar iaculis nec et velit.
                     </Typography>
                 </CardContent>
-              
+            </CardActionArea>
             </Card>
-            
+            <Button className={classes.button} component={Link} to={"/users/:id"} size="small" color="primary">
+                Seller Profile
+            </Button>
+            <Button className={classes.button} component={Link} to={"/ProfilePage"} size="small" color="primary">
+                Message Seller
+            </Button>     
+            <LocationDetail />
+            </div>
         )
     } else {
         return <div>Nothing to return</div>
@@ -62,45 +94,13 @@ export default ProductDetails;
 
 
 
-// //  const { id } = useParams(0);
-// //      const [product, setProduct] = useState(true);
-// //      const [loading, setLoading] = useState(9);
-// //      const [error, setError] = useState(0);
+
+
      
 
-//         function productDetails() {
-     
-// //      useEffect(() => {
-// //         const config = {
-// //             usl: `http://localhost:4000/api/v1/products/${id}`,
-// //             method: 'GET',
-// //             headers: { 'Content-Type': 'application/json' },
-// //         };
 
-// //         axios(config).then((response) => {
-// //             setProduct(response.data);
-// //         }).catch((err) => {
-// //             setError(err);
-// //         }).finally(() => {
-// //             setLoading(false);
-// //         });
-// //      }, [id]);
 
-//     //  if (loading) {
-//     //      return <p>loading...</p>
-//     //  } else if (error) {
-//     //      return <div> Error! </div>
-//     //  } else if (product) {
-//          return (
-//             <div className = "details">
-//             <p1>picture here?</p1>
-//             <h1>Name of item for sale</h1>
-//             <ListItemIcon ListItem alighnItems = "flex-start">List Item details<br>
-//                 </br>list more item detailshere<br>
-//                 </br>List more item details here</ListItemIcon>
-//             <br></br>
-//             <p1>descriptions</p1>
-//             <br></br>
+
 //             <p>Seller: </p>
 //             <Link to="/users/:id">
 //                 Link to Seller User Profile

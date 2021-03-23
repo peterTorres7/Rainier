@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
  const defaultFormValues = {
      sender: 'Annelise',
      text: '',
-     isRead: 'true',
+     isRead: 'false',
  };
 
 
@@ -42,7 +42,7 @@ export default function ConversationContainer({events}) {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        console.log('Sender: ', name, 'Message Value ', value);
+        console.log('Property', name, 'Value: ', value);
         setProductFormValues({
             ...productFormValues,
            [name] : value,

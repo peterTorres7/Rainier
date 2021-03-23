@@ -1,40 +1,39 @@
-import React  from 'react';
+import React, { useState, useEffect } from 'react';
 import './Details.css';
 import { ListItemIcon, Button } from '@material-ui/core';
 import { Link, useParams } from "react-router-dom";
-
-
 import LocationDetail from './LocationDetail';
+import axios from 'axios';
 
-//  const { id } = useParams(0);
-//      const [product, setProduct] = useState(true);
-//      const [loading, setLoading] = useState(9);
-//      const [error, setError] = useState(0);
-     
+function ProductDetails() {     
+    
+    const { id } = useParams();
+    const [product, setProduct] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-        function productDetails() {
-     
-//      useEffect(() => {
-//         const config = {
-//             usl: `http://localhost:4000/api/v1/products/${id}`,
-//             method: 'GET',
-//             headers: { 'Content-Type': 'application/json' },
-//         };
+     useEffect(() => {
+        const config = {
+            url: `http://localhost:4000/api/v1/products/${id}`,
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+        };
 
-//         axios(config).then((response) => {
-//             setProduct(response.data);
-//         }).catch((err) => {
-//             setError(err);
-//         }).finally(() => {
-//             setLoading(false);
-//         });
-//      }, [id]);
+        axios(config).then((response) => {
+            setProduct(response.data);
+        }).catch((err) => {
+            setError(err);
+        }).finally(() => {
+            setLoading(false);
+        });
+     }, [id]);
+     console.log('this is the product id: ', id);
 
-    //  if (loading) {
-    //      return <p>loading...</p>
-    //  } else if (error) {
-    //      return <div> Error! </div>
-    //  } else if (product) {
+     if (loading) {
+         return <p>loading...</p>
+     } else if (error) {
+         return <div> {`${error}`}</div>
+     } else if (product) {
          return (
             <div className = "details">
             <p1>picture here?</p1>
@@ -61,6 +60,6 @@ import LocationDetail from './LocationDetail';
          )
      }
 
-// }
+ }
 
-export default productDetails;
+export default ProductDetails;

@@ -37,13 +37,13 @@ export default function AutoGrid(props) {
       </Container>
       <Grid container spacing={3}>
         <Grid item xs>
-          <Paper className={classes.paper}>item for sale (if seller)</Paper>
+          <Paper className={classes.paper}>item for sale</Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>item for sale (if seller)</Paper>
+          <Paper className={classes.paper}>item for sale</Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={classes.paper}>item for sale (if seller)</Paper>
+          <Paper className={classes.paper}>item for sale</Paper>
         </Grid>
       </Grid>
     </div>

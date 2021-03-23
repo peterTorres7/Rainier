@@ -95,17 +95,6 @@ userRouter.get('/:name', (req, res) => {
   }); 
 });
 
-userRouter.route('/conversation')
-  // Get a single user by id
-  .get((req, res, next) => {
-    ConvoList.find({}, (err, convo) => {
-      if (err) { 
-        console.log("Can't get convos");
-        next(err) 
-      }
-      res.send(ConvolverNode);
-    })
-  });
 
 const jwtCheck = jwt({
   secret: jwks.expressJwtSecret({
@@ -120,11 +109,11 @@ const jwtCheck = jwt({
 });
 userRouter.use(jwtCheck);
   
-userRouter.route('/')
+userRouter.route('/conversation')
   .post((req, res, next) => {
     const { permissions } = req.user;
     console.log('Convo permissions: ', permissions);
-    if (permissions.includes('createProducts')) {
+    if (permissions.includes('send:message')) {
       next();
     } else {
       res.sendStatus(403);

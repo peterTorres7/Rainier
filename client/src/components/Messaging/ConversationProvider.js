@@ -15,7 +15,7 @@ class convoProvider extends React.Component {
 
     componentDidMount() {
         const requestConfig = {
-            url: 'http://localhost:4000/api/v1/users',
+            url: 'http://localhost:4000/api/v1/users/conversation',
             method: 'GET',
             headers: { 'Content-Type' : 'applicaiton/json'},
         };

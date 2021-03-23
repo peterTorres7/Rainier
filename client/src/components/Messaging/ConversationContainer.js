@@ -57,7 +57,7 @@ export default function ConversationContainer({events}) {
        console.log('THIS IS THE AUTH TOKEN: ', authToken);
 
         const requestConfig = {
-            url: 'http://localhost:4000/api/v1/users',
+            url: 'http://localhost:4000/api/v1/users/conversation',
             method: 'post',
             headers: { 
                'Content-Type' : 'application/json',
@@ -83,7 +83,7 @@ export default function ConversationContainer({events}) {
     return (
         <div className={classes.root}>
             <Container container direction='column'>
-                <Grid item className={classes.conversation}>
+                <Grid item className={classes.root}>
                     <Typography variant='h4'>Conversation </Typography>
                 </Grid>
                 <Conversation events={events} />

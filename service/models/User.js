@@ -23,10 +23,22 @@ const userSchema = mongoose.Schema({
     },
     userRole: {
         type: String,
-        enum: ['admin', 'moderator', 'user'],
+        enum: ['admin', 'user'],
         required: true,
     },
-    active: Boolean
+    dateCreated: { 
+        type: Date, 
+        default: Date.now 
+    },
+    active: {
+        type: Boolean, 
+        defualt: true
+    },
+    auth0Id: { 
+        type: String, 
+        required: true, 
+        unique: true 
+    } 
 });
 
 const User = mongoose.model('User', userSchema);

@@ -18,21 +18,15 @@ import {
  };
 
  const useStyles = makeStyles((theme) => ({
-     root: {
-         border: 1,
-         borderRadius: 2,
-         color: 'grey',
-         height: 20,
-         padding: '20 30px',
-         margin: theme.spacing(5),
-     },
+
+    root: {
+        marginTop: '50px',
+        margin: '10px',
+        justifyContent: 'space-evenly',
+        display: 'block',
+    },
      formControl: {
          padding: 20,             
-    },
-    title: {
-        margin: theme.spacing(1),
-        color: 'grey',
-        padding: '300px',
     },
  }));
 
@@ -94,7 +88,6 @@ import {
         return (
             <Container>
                 <form
-                    //onSubmit={handleSubmit}
                     className={classes.root}
                     id="productCreateForm"
                     >
@@ -158,10 +151,8 @@ import {
 
                     <button 
                         className= {classes.formControl}
-                        //type="submit"
                         aria-label="Submit Button" 
                         aria-required="true"  
-                        //form="productCreateForm"
                         onClick={handleSubmit}
                     >
                       Submit new product for sale

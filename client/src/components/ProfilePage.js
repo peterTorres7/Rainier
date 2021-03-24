@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     color: 'white',
     backgroundColor: 'grey',
+    marginBotton: '15px',
   }
 }));
 
@@ -25,27 +26,28 @@ export default function AutoGrid(props) {
   return (
     <div className={classes.root}>
       <Container className={classes.root}>
-        <h4>First and Last Name</h4>
-        <h5>User is a: (admin) {props.role}</h5>
-        <p>User locations & other details</p>
-        <Button 
-          className={classes.button}
-          component={Link}
-          to={'/users/conversation'}
-          >Message Seller
-        </Button>
+          <h4>First and Last Name</h4>
+          <h5>User is a: (admin) {props.role}</h5>
+          <p>User locations & other details</p>
+          <Button 
+            className={classes.button}
+            component={Link}
+            to={'/users/conversation'}
+            >
+              Message Seller
+          </Button>
       </Container>
-      <Grid container spacing={3}>
-        <Grid item xs>
-          <Paper className={classes.paper}>item for sale</Paper>
+        <Grid container spacing={3}>
+          <Grid item xs>
+            <Paper className={classes.paper}>item for sale</Paper>
+          </Grid>
+          <Grid item xs>
+            <Paper className={classes.paper}>item for sale</Paper>
+          </Grid>
+          <Grid item xs>
+            <Paper className={classes.paper}>item for sale</Paper>
+          </Grid>
         </Grid>
-        <Grid item xs>
-          <Paper className={classes.paper}>item for sale</Paper>
-        </Grid>
-        <Grid item xs>
-          <Paper className={classes.paper}>item for sale</Paper>
-        </Grid>
-      </Grid>
     </div>
   );
 }

@@ -1,13 +1,9 @@
 import React from 'react';
-import {GridList, GridListTile, makeStyles} from '@material-ui/core';
+import { makeStyles} from '@material-ui/core';
 import Message from './Message';
 
 const useStyles = makeStyles((theme) => ({
 
-    media: {
-        display: 'flex',
-        width: '100vw',
-    },
     root: {
         display: 'inline',
     },
@@ -19,7 +15,7 @@ export default function Conversation({ events }) {
         <div className = {classes.root}>
             <ul>
                 {events.map((event) => (
-                    <p3 className={classes.gridListTile} key={event._id}>
+                    <p3 className={classes} key={event._id}>
                         <Message event={event} />
                     </p3>
                 ))}

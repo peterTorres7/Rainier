@@ -14,13 +14,6 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#d8e3e6",
         minWidth: '300px',
     },
-    seller: {
-        display: 'inline',
-        textAlign: 'center',
-        width: '50vw',
-        backgroundColor: '#c2debd',
-        color: '#3d804f',
-    },
 }));
 
 export default function PopularItem({ event }) {

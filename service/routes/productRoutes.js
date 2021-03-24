@@ -19,7 +19,6 @@ productRouter.route('/')
   })
 
 productRouter.route('/:id')
-
   // Get a single product by id
   .get((req, res, next) => {
     ProductList.findById(req.params.id, (err, product) => {   
@@ -81,10 +80,6 @@ const jwtCheck = jwt({
   algorithms: ['RS256']
 });
 productRouter.use(jwtCheck);
-  
-  // app.get('/authorized', function (req, res) {
-  //    res.send('Secured Resource');
-  // });
   
 productRouter.route('/')
   .post((req, res, next) => {

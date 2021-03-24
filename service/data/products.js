@@ -1,6 +1,6 @@
 exports.productsList = [
     {  
-      name: 'dress1',    
+      name: 'DRESS',    
       qty: 1,
       price: 20.0,
       user: 'user1',

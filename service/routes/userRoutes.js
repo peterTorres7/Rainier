@@ -1,6 +1,13 @@
 const express = require('express');
 const userRouter = express.Router();
+
+const jwt = require('express-jwt');
+const jwks = require('jwks-rsa');
+
 const UsersList = require("../models/User");
+const ConvoList = require('../models/Conversation');
+const messageController = require('../controllers/messageController');
+
 
 userRouter.route('/')
   // Get all users
@@ -12,6 +19,17 @@ userRouter.route('/')
       res.send(list);
     })
   });
+
+userRouter.route('/conversation')
+// Get all users
+.get((req, res, next) => {
+  ConvoList.find({}, (err, list) => {
+    if (err) { 
+      next(err) 
+    }
+    res.send(list);
+  })
+});
 
 userRouter.route('/:id')
   // Get a single user by id
@@ -76,5 +94,30 @@ userRouter.get('/:name', (req, res) => {
     }
   }); 
 });
+
+
+const jwtCheck = jwt({
+  secret: jwks.expressJwtSecret({
+      cache: true,
+      rateLimit: true,
+      jwksRequestsPerMinute: 5,
+      jwksUri: 'https://dev-chq8gp3f.us.auth0.com/.well-known/jwks.json'
+  }),
+  audience: 'http://rainier-api',
+  issuer: 'https://dev-chq8gp3f.us.auth0.com/',
+  algorithms: ['RS256']
+});
+userRouter.use(jwtCheck);
+  
+userRouter.route('/conversation')
+  .post((req, res, next) => {
+    const { permissions } = req.user;
+    console.log('Convo permissions: ', permissions);
+    if (permissions.includes('send:message')) {
+      next();
+    } else {
+      res.sendStatus(403);
+    }
+  }, messageController.sendMessage);
 
 module.exports = userRouter;

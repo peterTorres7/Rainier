@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Button, Card, CardActionArea, CardActions, CardMedia, CardContent, makeStyles, Typography } from '@material-ui/core';
 import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
-
 import LocationDetail from './LocationDetail';
+import axios from 'axios';
 
 const useStyles = makeStyles ({
     root: {
@@ -74,10 +74,10 @@ function ProductDetails() {
                 </CardContent>
             </CardActionArea>
             </Card>
-            <Button className={classes.button} component={Link} to={"/users/:id"} size="small" color="primary">
+            <Button className={classes.button} component={Link} to={"/users/${event}"} size="small" color="primary">
                 Seller Profile
             </Button>
-            <Button className={classes.button} component={Link} to={"/ProfilePage"} size="small" color="primary">
+            <Button className={classes.button} component={Link} to={"/users/conversation"} size="small" color="primary">
                 Message Seller
             </Button>     
             <LocationDetail />
@@ -91,38 +91,3 @@ function ProductDetails() {
 
 export default ProductDetails;
 
-
-
-
-
-
-     
-
-
-
-
-//             <p>Seller: </p>
-//             <Link to="/users/:id">
-//                 Link to Seller User Profile
-//                 </Link>
-//             <form action="/Messaging/Message">
-//             <button 
-//                 className = "messageButton"
-//             >
-//                 Message Seller 
-//             </button>
-//             <div>
-
-//             </div>
-//             </form>
-//             <form action="/">
-//                 <button className="homeButton">Home</button>
-//             </form>
-//             <LocationDetail />
-//         </div>
-//          )
-//      }
-
-// // }
-
-// export default productDetails;

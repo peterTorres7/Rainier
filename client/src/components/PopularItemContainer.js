@@ -8,6 +8,7 @@ const useStyles = makeStyles((theme) => ({
         marging: '10px',
         justifyContent: 'space-evenly',
         flexWrap: 'wrap',
+        color: 'darkslategrey',
     },
     featuredItem: {
         margin: theme.spacing(1),
@@ -21,6 +22,7 @@ export default function PopularItemContainer({events}) {
             <Grid container direction='column'>
                 <Grid item className={classes.featuredItem}>
                     <Typography variant='h3'>Popular Items</Typography>
+                    <h3>Please enjoy browsing through the items for sale!</h3>
                 </Grid>
                 <PopularItemList events={events} />
             </Grid>

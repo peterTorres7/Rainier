@@ -17,12 +17,21 @@ const useStyles = makeStyles((theme) => ({
     },
     button: {
         display: 'center',
-        padding: '30px',
+        padding: '10px',
         justifyContent: 'space-evenly',
-        flexWrap: 'wrap',
         background: '#d8e3e6',
         color: 'navy',
         outlineColor: 'grey'
+    },
+    input: {
+        height: '35px',
+        display: 'flex',
+        marging: '10px',
+        justifyContent: 'space-evenly',
+        flexWrap: 'wrap',
+        display: 'center',
+        marginLeft: '55px',
+        paddingLeft: '150px'
     }
 }));
 
@@ -32,12 +41,10 @@ const useStyles = makeStyles((theme) => ({
      isRead: 'false',
  };
 
-
 export default function ConversationContainer({events}) {
     const classes = useStyles();
 
      const [productFormValues, setProductFormValues] = useState(defaultFormValues);
-     const [success, setSuccess] = useState(false);
      const { getAccessTokenSilently } = useAuth0();
 
     const handleInputChange = (event) => {
@@ -50,11 +57,10 @@ export default function ConversationContainer({events}) {
     };
 
     const handleSubmit = async (event) => {
-       console.log("button pressed");
        console.log('event', event);
        event.preventDefault();
        const authToken = await getAccessTokenSilently();
-       console.log('THIS IS THE AUTH TOKEN: ', authToken);
+       console.log('This is the AUTH TOKEN: ', authToken);
 
         const requestConfig = {
             url: 'http://localhost:4000/api/v1/users/conversation',
@@ -72,7 +78,6 @@ export default function ConversationContainer({events}) {
 
         axios(requestConfig)
            .then(() => {
-               setSuccess(true);
                console.log('Message Sent');
            })
            .catch((err) => {
@@ -87,20 +92,20 @@ export default function ConversationContainer({events}) {
                     <Typography variant='h4'>Conversation </Typography>
                 </Grid>
                 <Conversation events={events} />
-            </Container>
                 <input 
+                    className={classes.input}
                     placeholder='Write new message here: ' 
                     defaultValue={productFormValues.text}
                     onChange={handleInputChange}
                     name='text'
                 />
-
                 <button 
                     className={classes.button}
                     onClick={handleSubmit}
                     >
                     Send Message
                 </button>
+            </Container>
         </div>
     );
 }

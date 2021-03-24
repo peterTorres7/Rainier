@@ -86,7 +86,6 @@ function ProductDetails() {
     } else {
         return <div>Nothing to return</div>
     }
-
 }
 
 export default ProductDetails;

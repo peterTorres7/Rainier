@@ -3,7 +3,6 @@ import { Button, Card, CardActionArea, CardActions, CardMedia, CardContent, make
 import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
 import LocationDetail from './LocationDetail';
-import axios from 'axios';
 
 const useStyles = makeStyles ({
     root: {
@@ -77,7 +76,7 @@ function ProductDetails() {
             <Button className={classes.button} component={Link} to={"/users/${event}"} size="small" color="primary">
                 Seller Profile
             </Button>
-            <Button className={classes.button} component={Link} to={"/users/conversation"} size="small" color="primary">
+            <Button className={classes.button} component={Link} to={"/users/Conversation"} size="small" color="primary">
                 Message Seller
             </Button>     
             <LocationDetail />

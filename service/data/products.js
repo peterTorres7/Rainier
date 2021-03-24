@@ -1,44 +1,39 @@
 exports.productsList = [
-    {  
-      name: 'DRESS',    
-      qty: 1,
-      price: 20.0,
-      user: 'user1',
-      date: '01-01-2020' 
-      },
-    {
-      name: 'shirt1',     
-      qty: 3,
-      price: 5.0,
-      user: 'user2',
-      date: '01-01-2020'  
-    },
-    { 
-      name: 'pant1',      
-      qty: 10,  
-      price: 17.0,
-      user: 'user3',
-      date: '01-01-2020' 
-    },
-    { 
-      name: 'bodysuit3',  
-      qty: 0,   
-      price: 6.5,
-      user: 'user3',
-      date: '01-01-2020'  
-    },
-    {
-      name: 'dress2',     
-      qty: 2,   
-      price: 11.5,
-      user: 'user1',
-      date: '01-01-2020' 
-    },
-    { 
-      name: 'tshirt8',    
-      qty: 5,   
-      price: 15.0,
-      user: 'user2',
-      date: '01-01-2020'
-    }
-  ];
+  {  
+    name: "Red Chair",
+    qty: 3,
+    price: 35.00,
+    user: "6035900b066a6d006947e587",
+    date: "",
+    img: "../../uploads/6f15827a83f8c1998e754ad75654b3d1",
+    active: true,
+  },
+  {
+    name: "Old Table",
+    qty: 1,
+    price: 60.00,
+    user: "603590bc8933a500719fe103",
+    date: "",
+    img: "",
+    active: true,
+  },
+  {
+    name: "2018 Mini Cooper Countryman PHEV S E ALL4",
+    qty: 1,
+    price: 32000.00,
+    user: "60457226b8458600693a49a0",
+    date:"",
+    img: "",
+    active: true,
+  }, 
+  {
+    name: "2001 Mini Cooper Countryman",
+    qty: 0,
+    price: 21000.00,
+    user: "60457226b8458600693a49a0",
+    date: "",
+    img:"",
+    active: false,
+  }, 
+];
+

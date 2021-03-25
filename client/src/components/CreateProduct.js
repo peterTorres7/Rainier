@@ -49,7 +49,6 @@ import {
         console.log('event', event);
         event.preventDefault();
         const authToken = await getAccessTokenSilently();
-        console.log('THIS IS THE AUTH TOKEN: ', authToken);
 
          const requestConfig = {
              url: 'http://localhost:4000/api/v1/products',
@@ -93,7 +92,6 @@ import {
                     >
                     Enter Details of Product for sale:
                     <TextField 
-                        id = "name" 
                         className = {classes.root} 
                         aria-label="Name Input"
                         aria-required="true"
@@ -104,7 +102,6 @@ import {
                     />
 
                     <TextField 
-                        id = "qty" 
                         className= {classes.root} 
                         aria-label="Quantity Input"
                         aria-required="true"
@@ -115,7 +112,6 @@ import {
                     />
 
                     <TextField 
-                        id = "price" 
                         className= {classes.root} 
                         aria-label="Price Input" 
                         aria-required="true"
@@ -126,7 +122,6 @@ import {
                     />
 
                     <TextField 
-                        id = "user" 
                         className= {classes.root} 
                         aria-label="User Input" 
                         aria-required="true"
@@ -137,7 +132,6 @@ import {
                     />
 
                     <TextField 
-                        id = "date" 
                         className= {classes.root} 
                         aria-label="Date Input" 
                         aria-required="true"

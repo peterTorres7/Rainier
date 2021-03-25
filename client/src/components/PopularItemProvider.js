@@ -14,7 +14,6 @@ class PopularItemProvider extends React.Component {
 
     componentDidMount() {
         const requestConfig = {
-            
             url: 'http://localhost:4000/api/v1/products/',
             method: 'GET',
             headers: { 'Content-Type' : 'applicaiton/json'},
@@ -22,7 +21,6 @@ class PopularItemProvider extends React.Component {
 
         axios(requestConfig)
           .then((response) => {
-              console.log(response.data);
               this.setState({
                   events: response.data,
                   loading: false,

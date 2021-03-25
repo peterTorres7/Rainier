@@ -1,8 +1,6 @@
 import './App.css';
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 import HeaderNav from './components/HeaderNav';
-import Login from './components/Login';
-import SignUp from './components/SignUp';
 import Details from './components/Details';
 import ProfilePage from './components/ProfilePage';
 import CreateProduct from './components/CreateProduct';
@@ -14,12 +12,6 @@ function App() {
     <BrowserRouter>
       <HeaderNav />
       <Switch>
-        <Route path="/Login">
-          <Login />
-        </Route>
-        <Route exact path="/SignUp">
-          <SignUp />
-        </Route>
         <Route exact path="/Details/:id">
           <Details/>
         </Route>
@@ -27,7 +19,7 @@ function App() {
           <CreateProduct />
         </Route>
         <Route exact path="/users/conversation">
-          <ConversationProvider>Conversations should be here :(</ConversationProvider>
+          <ConversationProvider />
         </Route>
         <Route exact path="/users/:id">
           <ProfilePage />

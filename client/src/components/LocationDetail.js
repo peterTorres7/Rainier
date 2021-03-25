@@ -13,7 +13,7 @@ const useStyles = makeStyles ({
 
 const zoomLevel =  15;
 
-export default function LocationDetail({ location }) {
+export default function LocationDetail() {
     const classes = useStyles();
     const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
     return (
@@ -23,9 +23,9 @@ export default function LocationDetail({ location }) {
               defaultCenter={[47.6062, -122.3321]}
               defaultZoom={zoomLevel}
             >
-              <Marker
+            <Marker
                 text="Marker"
-              />
+            />
             </GoogleMapReact>
         </div>
     );

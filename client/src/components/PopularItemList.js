@@ -2,7 +2,7 @@ import React from 'react';
 import {GridList, GridListTile, makeStyles} from '@material-ui/core';
 import PopularItem from './PopularItem';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     root: {
         display: 'flex',
         flexWrap: 'wrap',

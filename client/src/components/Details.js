@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Card, CardActionArea, CardActions, CardMedia, CardContent, makeStyles, Typography } from '@material-ui/core';
+import { Button, Card, CardActionArea, CardMedia, CardContent, makeStyles, Typography } from '@material-ui/core';
 import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
 import LocationDetail from './LocationDetail';
@@ -31,7 +31,6 @@ function ProductDetails() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        console.log("product id is", id)
       const config = {
         url: `http://localhost:4000/api/v1/products/${id}`,
         method: 'GET',

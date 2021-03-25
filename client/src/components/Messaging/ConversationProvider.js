@@ -3,7 +3,7 @@ import axios from 'axios';
 import ConversationContainer from './ConversationContainer';
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 
-class convoProvider extends React.Component {
+class ConvoProvider extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -22,7 +22,6 @@ class convoProvider extends React.Component {
 
         axios(requestConfig)
           .then((response) => {
-              console.log(response.data);
               this.setState({
                   events: response.data,
                   loading: false,
@@ -53,9 +52,6 @@ class convoProvider extends React.Component {
 
     render() {
         const {loading, events, error} = this.state;
-        console.log('loading?', loading);
-        console.log('events: ', events);
-        console.log(error);
         if (loading) {
             return this.renderLoading();
         } else if (events.length > 0) {
@@ -68,7 +64,7 @@ class convoProvider extends React.Component {
     }
 }
 
-export default convoProvider;
+export default ConvoProvider;
 
 withAuthenticationRequired(ConversationContainer, {
     returnTo: () => '/users/conversation',

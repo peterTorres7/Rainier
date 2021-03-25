@@ -56,5 +56,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Assignment Week6 - listening at http://localhost:${port}`);
+  console.log(`Rainier server listening at http://localhost:${port}`);
 });
